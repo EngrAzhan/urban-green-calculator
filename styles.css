@@ -339,6 +339,6 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 
 /* The "Swaying" Tree Animation */
 @keyframes sway {
-    0%, 100% { transform: translateX(-50%) rotate(-2deg); }
-    50% { transform: translateX(-50%) rotate(2deg); }
+    0%, 100% { transform: translateX(-50%) rotate(-8deg); }
+    50% { transform: translateX(-50%) rotate(8deg); }
 }
