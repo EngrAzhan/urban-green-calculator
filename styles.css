@@ -112,33 +112,20 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     text-align: right;
     display: inline-block;
 }
+/* This forces the labels and numbers into a clean grid */
 .results p {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #eee;
     padding: 10px 0;
-    font-size: 1rem;
 }
 
-/* This fixes the Label (e.g., "Fuel per day:") */
-.results p {
-    justify-content: flex-start; 
-}
-
-/* This is the magic part for the numbers */
-.results span {
-    margin-left: auto; /* Pushes number to the right */
-    margin-right: 10px; /* Space before the unit (L, kg, etc) */
-    font-family: 'Courier New', monospace; /* Keeps digits same width */
+/* This targets the number specifically to align them vertically */
+.results p span {
+    font-family: 'Courier New', Courier, monospace; /* Essential: every digit is the same width */
     font-weight: bold;
     text-align: right;
-    width: 120px; /* FORCES a straight vertical starting line */
-    display: inline-block;
-}
-
-/* This makes sure the units (L, kg, PKR) also stay aligned */
-.results p i, .results p em, .results p b {
-    width: 40px; 
-    text-align: left;
+    min-width: 150px; /* This creates the straight vertical 'wall' on the right */
     display: inline-block;
 }
