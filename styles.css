@@ -39,3 +39,36 @@ table.data{width:100%;border-collapse:collapse;margin-top:12px}
 table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:left}
 .recommend{background:#f7fffa;padding:10px;border-radius:6px;border:1px solid #e6f3ea;margin-top:10px}
 @media (max-width:700px){input[type=number]{width:100%} .site-header .container{flex-direction:column;gap:8px} .hero{height:220px}}
+/* Mobile Fixes */
+@media (max-width: 600px) {
+  .site-header .container {
+    flex-direction: column; /* Stacks the title and links vertically */
+    text-align: center;
+  }
+
+  .nav {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap; /* Allows links to move to a second line if needed */
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .nav a {
+    margin-left: 0;
+    font-size: 14px;
+  }
+
+  .hero {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+
+  input[type=number] {
+    width: 100%; /* Makes input boxes full width on phones */
+  }
+}
