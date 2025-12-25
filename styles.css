@@ -129,3 +129,68 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     min-width: 150px; /* This creates the straight vertical 'wall' on the right */
     display: inline-block;
 }
+/* --- Professional Sections --- */
+.stats-banner {
+    display: flex;
+    justify-content: space-around;
+    background: #0b7a43;
+    color: white;
+    padding: 25px 10px;
+    margin-bottom: 30px;
+}
+
+.stat-item { text-align: center; }
+.stat-item strong { display: block; font-size: 0.8rem; text-transform: uppercase; opacity: 0.8; }
+.stat-item span { font-size: 1.2rem; font-weight: bold; }
+
+.section-title {
+    color: #0b7a43;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.info-block {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-left: 4px solid #0b7a43;
+    background: #f9f9f9;
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 40px 0;
+}
+
+/* --- Deep Dive Layout --- */
+.deep-dive-section { padding: 50px 0; background: #f4f4f4; }
+
+.info-with-media {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 50px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.info-with-media.reverse { flex-direction: row-reverse; }
+
+.media-image {
+    width: 40%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.media-content { width: 60%; }
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .info-with-media, .info-with-media.reverse { flex-direction: column; }
+    .media-image, .media-content { width: 100%; }
+    .stats-banner { flex-direction: column; gap: 15px; }
+}
