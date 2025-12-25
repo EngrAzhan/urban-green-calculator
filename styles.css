@@ -174,4 +174,51 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     min-width: 150px; /* This creates the straight vertical 'wall' on the right */
     display: inline-block;
 }
+/* Glassmorphism for Text Only */
+.human-rationale {
+    padding: 60px 20px;
+}
 
+.rationale-title {
+    color: #ffffff;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.glass-text-card {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    padding: 40px;
+    
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.12); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* Borders and Corners */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+}
+
+.glass-text-card h3 {
+    color: #ffffff;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.glass-text-card p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+.glass-text-card strong {
+    color: #ffd700; /* Gold highlight for tree names to make them pop */
+}
