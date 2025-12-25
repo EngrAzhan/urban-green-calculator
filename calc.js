@@ -30,11 +30,44 @@ function calculate(){
   const annualSavings = Math.max(0, annualFuelCost * replacedFraction - maint);
   const payback = annualSavings>0? (install/annualSavings):null;
 
+  // Static updates (normal display)
   document.getElementById('fuelDay').innerText = fuelDay.toFixed(2);
   document.getElementById('co2Day').innerText = co2Day.toFixed(2);
-  document.getElementById('costDay').innerText = costDay.toFixed(0);
   document.getElementById('dieselEnergy').innerText = dieselEnergy.toFixed(2);
   document.getElementById('solarEnergy').innerText = solarEnergy.toFixed(2);
-  document.getElementById('annualCO2').innerText = annualCO2saved.toFixed(0);
   document.getElementById('payback').innerText = payback? payback.toFixed(1): 'N/A';
+
+  // ANIMATED updates (These will count up from 0)
+  // We use Math.round because the animation looks best with whole numbers
+  animateValue("annualCO2", 0, Math.round(annualCO2saved), 1200);
+  animateValue("costDay", 0, Math.round(costDay), 1000);
+
+} // <--- This is the closing bracket for calculate()
+
+// --- EVERYTHING BELOW IS OUTSIDE THE BRACKETS ---
+
+function animateValue(id, start, end, duration) {
+    let obj = document.getElementById(id);
+    if (!obj) return;
+    let range = end - start;
+    let minTimer = 50;
+    let stepTime = Math.abs(Math.floor(duration / range)) || minTimer;
+    let startTime = new Date().getTime();
+    let endTime = startTime + duration;
+    let timer;
+
+    function run() {
+        let now = new Date().getTime();
+        let remaining = Math.max((endTime - now) / duration, 0);
+        let value = Math.round(end - (remaining * range));
+        
+        // This line adds commas (e.g. 11,836) to make it look professional
+        obj.innerHTML = value.toLocaleString(); 
+        
+        if (value == end) {
+            clearInterval(timer);
+        }
+    }
+    timer = setInterval(run, stepTime);
+    run();
 }
