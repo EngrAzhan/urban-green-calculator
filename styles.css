@@ -112,3 +112,20 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     text-align: right;
     display: inline-block;
 }
+/* This forces the labels and numbers into a clean grid */
+.results p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+/* This targets the number specifically to align them vertically */
+.results p span {
+    font-family: 'Courier New', Courier, monospace; /* Essential: every digit is the same width */
+    font-weight: bold;
+    text-align: right;
+    min-width: 150px; /* This creates the straight vertical 'wall' on the right */
+    display: inline-block;
+}
