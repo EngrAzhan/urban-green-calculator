@@ -307,45 +307,42 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                       url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1600');
 }
-.leaf-container {
-    position: relative;
-    overflow: hidden; /* This hides the leaf when it goes outside the white box */
-    padding: 20px;
+.leaf-scene {
+    position: relative; /* Anchor for the leaves */
+    overflow: hidden;    /* Clips leaves so they don't leave the box */
+    padding: 40px;
     background: white;
-    border-radius: 8px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.blowing-leaf {
+.leaf {
     position: absolute;
-    width: 200px;  /* Adjust size as needed */
-    bottom: 20%;   /* Height from the bottom */
     z-index: 10;
-    opacity: 0.8;
     pointer-events: none;
-
-    /* 8s = duration (slower is more natural)
-       linear = constant speed
-       infinite = keeps repeating
-    */
-    animation: blowAcross 8s linear infinite;
+    opacity: 0;
+    /* This animation makes them tumble and move */
+    animation: wind-tumble 12s linear infinite;
 }
 
-/* The Movement Logic */
-@keyframes blowAcross {
+/* Individual Settings for Randomness */
+.L1 { width: 45px; top: 10%; animation-delay: 0s; }
+.L2 { width: 30px; top: 40%; animation-delay: 3s; animation-duration: 9s; }
+.L3 { width: 50px; top: 25%; animation-delay: 6s; animation-duration: 15s; }
+.L4 { width: 35px; top: 70%; animation-delay: 9s; animation-duration: 11s; }
+
+@keyframes wind-tumble {
     0% {
-        left: -120px; /* Start completely off-screen to the left */
-        transform: rotate(0deg);
+        left: -15%;
+        opacity: 0;
+        transform: rotate(0deg) translateY(0);
     }
-    50% {
-        transform: rotate(20deg) translateY(-20px); /* Slight dip in the middle */
-    }
+    10% { opacity: 0.7; }
+    50% { transform: rotate(180deg) translateY(-30px); } /* Up and spin */
+    80% { opacity: 0.7; }
     100% {
-        left: 100%; /* Move completely to the right end */
-        transform: rotate(45deg);
+        left: 110%;
+        opacity: 0;
+        transform: rotate(720deg) translateY(20px); /* Down and spin */
     }
-}
-.leaf-2 {
-    animation-delay: 4s; /* This leaf starts 4 seconds after the first one */
-    bottom: 40%;         /* Different height */
-    width: 150px;         /* Different size */
 }
