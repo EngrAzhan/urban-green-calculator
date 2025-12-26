@@ -297,10 +297,32 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     padding: 80px 0;
 }
 
-/* Ensures the glass card inside looks professional against the smoke background */
-.diesel-bg-section .glass-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+/* Base style for all background sections */
+.rationale-section {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+}
+
+/* 1. Diesel Generator Background */
+.diesel-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?q=80&w=1600');
+}
+
+/* 2. Solar Panels Background */
+.solar-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                      url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?q=80&w=1600');
+}
+
+/* 3. Lush Trees Background */
+.tree-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                      url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1600');
 }
