@@ -307,25 +307,45 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                       url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1600');
 }
-/* Container must be relative so leaves don't fly away */
-.intro div {
+.leaf-container {
     position: relative;
+    overflow: hidden; /* This hides the leaf when it goes outside the white box */
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
 }
 
-.floating-leaves {
+.blowing-leaf {
     position: absolute;
-    bottom: -20px;   /* Positions it at the bottom */
-    right: -10px;    /* Positions it at the right */
-    width: 400px;    /* Size of the leaves */
-    pointer-events: none; /* So you can still click text behind them */
-    z-index: 5;
-    
-    /* Animation call */
-    animation: sway 4s ease-in-out infinite alternate;
-    transform-origin: bottom right;
+    width: 100px;  /* Adjust size as needed */
+    bottom: 20%;   /* Height from the bottom */
+    z-index: 10;
+    opacity: 0.8;
+    pointer-events: none;
+
+    /* 8s = duration (slower is more natural)
+       linear = constant speed
+       infinite = keeps repeating
+    */
+    animation: blowAcross 8s linear infinite;
 }
 
-@keyframes sway {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(8deg); }
+/* The Movement Logic */
+@keyframes blowAcross {
+    0% {
+        left: -120px; /* Start completely off-screen to the left */
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(20deg) translateY(-20px); /* Slight dip in the middle */
+    }
+    100% {
+        left: 100%; /* Move completely to the right end */
+        transform: rotate(45deg);
+    }
+}
+.leaf-2 {
+    animation-delay: 4s; /* This leaf starts 4 seconds after the first one */
+    bottom: 40%;         /* Different height */
+    width: 70px;         /* Different size */
 }
