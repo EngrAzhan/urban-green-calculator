@@ -286,3 +286,21 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                       url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200');
 }
+.diesel-bg-section {
+    position: relative;
+    /* This link points to a generator image with smoke/exhaust vibes */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?q=80&w=1600');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; /* Change to 'fixed' for a parallax effect */
+    padding: 80px 0;
+}
+
+/* Ensures the glass card inside looks professional against the smoke background */
+.diesel-bg-section .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
