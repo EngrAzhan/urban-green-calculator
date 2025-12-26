@@ -47,7 +47,6 @@ function calculate(){
   }
   // Give the animation 1.5 seconds to finish before switching screens
   setTimeout(() => {
-    document.querySelector('section.container').style.display = 'none';
     document.getElementById('final-impact').style.display = 'block';
   }, 1500);
 
@@ -84,6 +83,7 @@ function animateValue(id, start, end, duration) {
     }
     requestAnimationFrame(run);
 }
+
 
 
 
