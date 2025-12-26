@@ -346,3 +346,54 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         transform: rotate(720deg) translateY(20px); /* Down and spin */
     }
 }
+.generator-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.generator-img {
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    /* This makes the generator vibrate */
+    animation: vibrate 0.2s infinite;
+}
+
+.smoke {
+    position: absolute;
+    top: 15%; /* Adjust this to your exhaust pipe location */
+    left: 50%; /* Adjust this to your exhaust pipe location */
+    width: 60px;
+    opacity: 0;
+    pointer-events: none;
+    filter: grayscale(1) brightness(0.3) blur(2px);
+}
+
+/* Smoke layers */
+.back-smoke { z-index: 2; animation: exhaust-flow 5s infinite; }
+.front-smoke { z-index: 8; animation: exhaust-flow 5s infinite 2.5s; }
+
+/* Engine Vibration Animation */
+@keyframes vibrate {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(1px, 1px) rotate(0.1deg); }
+    50% { transform: translate(-1px, -1px) rotate(-0.1deg); }
+    75% { transform: translate(1px, -1px) rotate(0.1deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Smoke Flow Animation */
+@keyframes exhaust-flow {
+    0% {
+        transform: translate(0, 0) scale(0.3);
+        opacity: 0;
+    }
+    20% { opacity: 0.6; }
+    100% {
+        transform: translate(120px, -100px) scale(3);
+        opacity: 0;
+    }
+}
