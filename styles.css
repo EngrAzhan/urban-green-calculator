@@ -415,3 +415,62 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 .back-smoke { z-index: 2; animation: exhaust-flow 5s infinite; }
 .front-smoke { z-index: 8; animation: exhaust-flow 5s infinite 2.5s; }
 
+/* --- MOBILE (Default) --- */
+.solar-container {
+    position: relative;
+    width: 220px;
+    margin: 20px auto; /* Centers below text on mobile */
+    text-align: center;
+    z-index: 5;
+}
+
+.solar-panel-img {
+    width: 100%;
+    border-radius: 8px;
+    /* Keeps the JPG background hidden against the white card */
+    mix-blend-mode: multiply; 
+    filter: contrast(1.1);
+}
+
+.sun-img {
+    position: absolute;
+    top: -30px;
+    right: -20px;
+    width: 60px;
+    z-index: 10;
+    mix-blend-mode: multiply;
+    animation: sun-glow 3s infinite ease-in-out; /* Smooth clean energy pulse */
+}
+
+.sun-rays {
+    position: absolute;
+    top: -50px;
+    right: -40px;
+    width: 120px;
+    opacity: 0.6;
+    z-index: 9;
+    animation: rotate-rays 10s linear infinite;
+}
+
+/* --- DESKTOP (Screens wider than 768px) --- */
+@media (min-width: 768px) {
+    .solar-container {
+        position: absolute;
+        top: 50%;
+        right: 10px; /* Aligns to right side of white box */
+        transform: translateY(-50%);
+        margin: 0;
+        width: 280px; /* Larger size for desktop */
+    }
+}
+
+/* --- SOLAR ANIMATIONS --- */
+@keyframes sun-glow {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.2); filter: brightness(1.3); }
+}
+
+@keyframes rotate-rays {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
