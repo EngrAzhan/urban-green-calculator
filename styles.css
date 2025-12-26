@@ -343,41 +343,35 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     50% { transform: translateX(-50%) rotate(8deg); }
 }
 
-/* This makes the section big and handles the background image */
+/* 1. Base section setup */
 .full-bg-section {
     position: relative;
-    min-height: 100vh; /* Covers the full screen height */
+    width: 100%;
+    min-height: 100vh; /* This ensures the section is at least as tall as the screen */
     display: flex;
     align-items: center;
+    justify-content: center;
     background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* The "Parallax" magic */
-    padding: 60px 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Parallax effect */
+    z-index: 1;
 }
 
-/* Background Images with dark overlays so text is readable */
+/* 2. Specific Backgrounds with dark overlays */
+/* Note: Using linear-gradient first acts as a 'tint' so white text stays readable */
+
 .diesel-img {
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-    url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?q=80&w=1200');
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?auto=format&fit=crop&q=80&w=1200');
 }
 
 .solar-img {
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-    url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?q=80&w=1200');
+    background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
+                      url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?auto=format&fit=crop&q=80&w=1200');
 }
 
 .tree-img {
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-    url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200');
-}
-
-/* Ensure the glass cards look sharp against the big backgrounds */
-.full-bg-section .glass-card {
-    max-width: 600px;
-    margin-left: 5%; /* Aligns card slightly to the left for a modern look */
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 40px;
-    border-radius: 30px;
+    background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
+                      url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1200');
 }
