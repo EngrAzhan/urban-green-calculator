@@ -61,43 +61,46 @@
       </div>
 
       <div class="step" id="step3" style="display:none;">
-        <h3>Step 3 — Results</h3>
-        <div class="results">
-          <div class="result-row"><span>Fuel per day:</span><strong id="fuelDay">–</strong> L</div>
-          <div class="result-row"><span>CO₂ per day:</span><strong id="co2Day">–</strong> kg</div>
-          <div class="result-row"><span>Diesel cost per day:</span><strong id="costDay">–</strong> PKR</div>
-          <div class="result-row"><span>Diesel energy/day:</span><strong id="dieselEnergy">–</strong> kWh</div>
-          <div class="result-row"><span>Solar energy/day:</span><strong id="solarEnergy">–</strong> kWh</div>
-          <div class="result-row"><span>Annual CO₂ saved:</span><strong id="annualCO2">–</strong> kg</div>
-          <div class="result-row"><span>Payback period:</span><strong id="payback">–</strong> years</div>
-        </div>
-        <div class="actions">
-          <button onclick="goToStep2()">← Back</button>
-          <button onclick="calculate()">Calculate</button>
-        </div>
-        <p class="notes">Tip: use the Karachi default values in the About page as references for your report.</p>
-      </div>
-    </section>
-    <div id="final-impact" style="display:none;">
-    <div class="impact-hero">
-        <img src="sust-logo.png" class="sust-logo-img" alt="Sustainability">
-        
-        <div class="impact-stats-card">
-            <img src="impact-tree.png" class="impact-tree-img" alt="Tree">
-            <div class="impact-info">
-                <p>Your annual CO₂ savings is equal to planting</p>
-                <h2 id="tree-count-hero">0</h2>
-                <p>Trees Every Year!</p>
+    <h3>Step 3 — Results</h3>
+    
+    <div class="results">
+        <div class="result-row"><span>Fuel per day:</span><strong id="fuelDay">–</strong> L</div>
+        <div class="result-row"><span>CO₂ per day:</span><strong id="co2Day">–</strong> kg</div>
+        <div class="result-row"><span>Diesel cost per day:</span><strong id="costDay">–</strong> PKR</div>
+        <div class="result-row"><span>Diesel energy/day:</span><strong id="dieselEnergy">–</strong> kWh</div>
+        <div class="result-row"><span>Solar energy/day:</span><strong id="solarEnergy">–</strong> kWh</div>
+        <div class="result-row"><span>Annual CO₂ saved:</span><strong id="annualCO2">–</strong> kg</div>
+        <div class="result-row"><span>Payback period:</span><strong id="payback">–</strong> years</div>
+    </div>
+
+    <div id="final-impact" style="display:none; margin-top: 30px; border-top: 2px dashed #e0e7ff; padding-top: 20px;">
+        <div class="impact-hero">
+            <img src="sust-logo.png" class="sust-logo-img" alt="Sustainability">
+            
+            <div class="impact-stats-card">
+                <img src="impact-tree.png" class="impact-tree-img" alt="Tree">
+                <div class="impact-info">
+                    <p>Your annual CO₂ savings is equal to planting</p>
+                    <h2 id="tree-count-hero">0</h2>
+                    <p>Trees Every Year!</p>
+                </div>
+            </div>
+
+            <div class="landscape-box">
+                <img src="city-landscape.png" class="city-landscape-img" alt="Green City">
             </div>
         </div>
-
-        <div class="landscape-box">
-            <img src="city-landscape.png" class="city-landscape-img" alt="Green City">
-        </div>
-        
-        <button class="reset-btn" onclick="location.reload()">New Calculation</button>
     </div>
+
+    <div class="actions">
+        <button onclick="goToStep2()">← Back</button>
+        <button onclick="calculate()">Calculate</button>
+        <button class="reset-btn" onclick="location.reload()" style="display:none;" id="resetBtn">New Calculation</button>
+    </div>
+    <p class="notes">Tip: use the Karachi default values in the About page as references for your report.</p>
 </div>
+
+
   </main>
 
   <footer class="site-footer">
@@ -109,6 +112,7 @@
 </body>
 
 </html>
+
 
 
 
