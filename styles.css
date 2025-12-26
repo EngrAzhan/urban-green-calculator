@@ -307,3 +307,25 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                       url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1600');
 }
+/* Container must be relative so leaves don't fly away */
+.intro div {
+    position: relative;
+}
+
+.floating-leaves {
+    position: absolute;
+    bottom: -20px;   /* Positions it at the bottom */
+    right: -10px;    /* Positions it at the right */
+    width: 120px;    /* Size of the leaves */
+    pointer-events: none; /* So you can still click text behind them */
+    z-index: 5;
+    
+    /* Animation call */
+    animation: sway 4s ease-in-out infinite alternate;
+    transform-origin: bottom right;
+}
+
+@keyframes sway {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(12deg); }
+}
