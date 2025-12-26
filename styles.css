@@ -431,3 +431,32 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         opacity: 0;
     }
 }
+.smoke {
+    position: absolute;
+    top: 30%; /* Adjust this to match the silver exhaust hole on your Honda generator */
+    left: 75%; /* Moves smoke to the right side where the exhaust is */
+    width: 80px;
+    opacity: 0;
+    pointer-events: none;
+    
+    /* ADD THIS: This hides the grey background of your JPG smoke */
+    mix-blend-mode: multiply; 
+    filter: grayscale(1) contrast(1.5);
+    
+    z-index: 10; /* Ensures it sits on top of the white box */
+}
+
+/* Update the animation to ensure it becomes visible */
+@keyframes exhaust-flow {
+    0% { 
+        transform: translate(0, 0) scale(0.2); 
+        opacity: 0; 
+    }
+    20% { 
+        opacity: 0.8; /* Make sure this is high enough to see */
+    }
+    100% {
+        transform: translate(-100px, -150px) scale(2); /* Blows smoke UP and LEFT */
+        opacity: 0;
+    }
+}
