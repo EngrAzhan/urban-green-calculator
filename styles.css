@@ -442,15 +442,6 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     animation: sun-glow 3s infinite ease-in-out; /* Smooth clean energy pulse */
 }
 
-.sun-rays {
-    position: absolute;
-    top: -50px;
-    right: -40px;
-    width: 120px;
-    opacity: 0.6;
-    z-index: 9;
-    animation: rotate-rays 10s linear infinite;
-}
 
 /* --- DESKTOP (Screens wider than 768px) --- */
 @media (min-width: 768px) {
@@ -470,7 +461,31 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     50% { transform: scale(1.2); filter: brightness(1.3); }
 }
 
-@keyframes rotate-rays {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.sun-rays {
+    position: absolute;
+    top: -30px;      /* Align with the center of your sun image */
+    right: -20px;    /* Align with the center of your sun image */
+    width: 60px;     /* Start small (the size of the sun) */
+    opacity: 0;
+    z-index: 9;
+    pointer-events: none;
+    
+    /* Change the animation name here */
+    animation: energy-flow 2s infinite ease-in; 
+}
+
+/* --- NEW SOLAR ENERGY ANIMATION --- */
+@keyframes energy-flow {
+    0% {
+        transform: scale(0.1) translate(0, 0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8; /* Light appears at the sun */
+    }
+    100% {
+        /* This moves the rays DOWN and LEFT toward the panel */
+        transform: scale(1.5) translate(-100px, 100px); 
+        opacity: 0; /* Fades out as it hits the panel */
+    }
 }
