@@ -38,7 +38,6 @@ function calculate(){
   animateValue("solarEnergy", 0, solarEnergy, 1000);
   animateValue("annualCO2", 0, annualCO2saved, 1200);
   animateValue("payback", 0, payback, 1000);
-  function calculate() {
     // 1. First, run your existing math formulas here...
     // (Ensure variables like annualCO2 are calculated)
 
@@ -86,5 +85,6 @@ function animateValue(id, start, end, duration) {
     }
     requestAnimationFrame(run);
 }
+
 
 
