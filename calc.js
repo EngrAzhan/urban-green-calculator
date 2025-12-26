@@ -38,6 +38,24 @@ function calculate(){
   animateValue("solarEnergy", 0, solarEnergy, 1000);
   animateValue("annualCO2", 0, annualCO2saved, 1200);
   animateValue("payback", 0, payback, 1000);
+  function calculate() {
+    // 1. First, run your existing math formulas here...
+    // (Ensure variables like annualCO2 are calculated)
+
+    // 2. Get the result value from the strong tag
+    let co2Val = document.getElementById('annualCO2').innerText;
+    let numericCO2 = parseFloat(co2Val.replace(/,/g, '')) || 0;
+
+    // 3. Math: Trees = CO2 / 22
+    let trees = Math.round(numericCO2 / 22);
+    document.getElementById('tree-count-hero').innerText = trees;
+
+    // 4. HIDE the white box (the section container)
+    document.querySelector('section.container').style.display = 'none';
+
+    // 5. SHOW the new impact result page
+    document.getElementById('final-impact').style.display = 'block';
+}
 } 
 
 function animateValue(id, start, end, duration) {
@@ -69,3 +87,4 @@ function animateValue(id, start, end, duration) {
     }
     requestAnimationFrame(run);
 }
+
