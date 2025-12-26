@@ -294,12 +294,14 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     background-position: center;
     min-height: 80vh;
 }
-/* 2. Solar Background (Sun/Solar Panels) */
 .solar-bg {
+    /* This tells the browser to use the file you uploaded to your GitHub */
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                      url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?q=80&w=1600');
+                      url('solar.jpg'); 
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
 }
-
 /* 3. Tree Background (Lush Greenery) */
 .tree-bg {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
