@@ -505,68 +505,112 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         opacity: 0; /* Fades out as it hits the panel */
     }
 }
-### 2. CSS for the "Full Page" Look
-Add this to `styles.css`. This ensures the images aren't squeezed and the "Green City" looks like a horizon at the bottom.
-
-```css
+/* --- IMPACT PAGE (Full Width) --- */
 #final-impact {
     width: 100%;
+    background-color: #ffffff; /* Matches the clean look of the white box */
     padding: 50px 0 0 0;
+    margin: 0;
     text-align: center;
-    background: #ffffff; /* Or match your site background */
+    border-top: 5px solid #28a745; /* Green accent line at the top */
 }
 
 .impact-wrapper {
-    max-width: 1100px; /* Wider than your white box */
+    max-width: 1100px; /* Wider than the calculator for a 'hero' feel */
     margin: 0 auto;
+    padding: 0 20px;
 }
 
+/* Sustainability Logo PNG */
 .sust-logo {
-    width: 250px;
-    margin-bottom: 30px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 40px;
 }
 
-.impact-card {
+/* The Grid for Tree and Stats */
+.impact-grid {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 50px;
     background: #f0fdf4; /* Light green success background */
     padding: 40px;
-    border-radius: 30px;
-    margin: 0 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
+/* Tree PNG image */
 .tree-img {
-    width: 200px;
+    width: 180px;
     height: auto;
 }
 
 .impact-text h2 {
-    font-size: 4rem;
-    color: #166534;
+    font-size: 4.5rem; /* Big impact number */
+    color: #15803d;
+    margin: 10px 0;
+    font-weight: 900;
+}
+
+.impact-text p {
+    font-size: 1.2rem;
+    color: #4b5563;
     margin: 0;
 }
 
+/* Landscape PNG at the bottom */
 .landscape-container {
     width: 100%;
-    margin-top: 50px;
-    overflow: hidden;
+    margin-top: 60px;
+    line-height: 0; /* Removes gap at bottom of image */
 }
 
 .city-footer {
     width: 100%;
+    height: auto;
     display: block;
-    max-height: 400px;
-    object-fit: cover; /* Keeps it looking like a scenery horizon */
+    /* This makes the city scenery act as a horizon */
+    object-fit: cover; 
 }
 
-/* Mobile stacking logic */
+/* Reset Button Style */
+.btn-restart {
+    background-color: #15803d;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 40px 0;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.btn-restart:hover {
+    transform: scale(1.05);
+    background-color: #166534;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-    .impact-card {
-        flex-direction: column;
-        padding: 20px;
+    .impact-grid {
+        flex-direction: column; /* Stacks tree on top of text */
+        gap: 20px;
+        padding: 30px 20px;
     }
-    .tree-img { width: 150px; }
-    .sust-logo { width: 200px; }
+
+    .impact-text h2 {
+        font-size: 3rem;
+    }
+
+    .tree-img {
+        width: 140px;
+    }
+
+    .sust-logo {
+        max-width: 220px;
+    }
 }
