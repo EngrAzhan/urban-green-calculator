@@ -435,7 +435,7 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 .sun-img {
     position: absolute;
     top: -30px;
-    right: -20px;
+    right: 100px;
     width: 60px;
     z-index: 10;
     mix-blend-mode: multiply;
