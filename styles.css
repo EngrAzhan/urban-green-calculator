@@ -505,112 +505,66 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         opacity: 0; /* Fades out as it hits the panel */
     }
 }
-/* --- IMPACT PAGE (Full Width) --- */
 #final-impact {
     width: 100%;
-    background-color: #ffffff; /* Matches the clean look of the white box */
-    padding: 50px 0 0 0;
-    margin: 0;
+    padding: 40px 0;
     text-align: center;
-    border-top: 5px solid #28a745; /* Green accent line at the top */
 }
 
-.impact-wrapper {
-    max-width: 1100px; /* Wider than the calculator for a 'hero' feel */
+.impact-hero {
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Sustainability Logo PNG */
-.sust-logo {
+.sust-logo-img {
     width: 100%;
-    max-width: 300px;
-    height: auto;
-    margin-bottom: 40px;
+    max-width: 280px;
+    margin-bottom: 30px;
 }
 
-/* The Grid for Tree and Stats */
-.impact-grid {
+.impact-stats-card {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
-    background: #f0fdf4; /* Light green success background */
-    padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    gap: 30px;
+    background: #ffffff;
+    border: 2px solid #e0e7ff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
-/* Tree PNG image */
-.tree-img {
-    width: 180px;
-    height: auto;
+.impact-tree-img {
+    width: 150px;
 }
 
-.impact-text h2 {
-    font-size: 4.5rem; /* Big impact number */
-    color: #15803d;
-    margin: 10px 0;
-    font-weight: 900;
+#tree-count-hero {
+    font-size: 4rem;
+    color: #2d6a4f;
+    margin: 5px 0;
 }
 
-.impact-text p {
-    font-size: 1.2rem;
-    color: #4b5563;
-    margin: 0;
-}
-
-/* Landscape PNG at the bottom */
-.landscape-container {
+.city-landscape-img {
     width: 100%;
-    margin-top: 60px;
-    line-height: 0; /* Removes gap at bottom of image */
+    max-width: 700px;
+    margin-top: 40px;
 }
 
-.city-footer {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* This makes the city scenery act as a horizon */
-    object-fit: cover; 
-}
-
-/* Reset Button Style */
-.btn-restart {
-    background-color: #15803d;
+.reset-btn {
+    background: #2d6a4f;
     color: white;
-    border: none;
     padding: 15px 40px;
-    font-size: 1.1rem;
+    border: none;
     border-radius: 50px;
-    cursor: pointer;
-    margin: 40px 0;
     font-weight: bold;
-    transition: transform 0.2s;
+    cursor: pointer;
+    margin-top: 30px;
 }
 
-.btn-restart:hover {
-    transform: scale(1.05);
-    background-color: #166534;
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 768px) {
-    .impact-grid {
-        flex-direction: column; /* Stacks tree on top of text */
-        gap: 20px;
-        padding: 30px 20px;
-    }
-
-    .impact-text h2 {
-        font-size: 3rem;
-    }
-
-    .tree-img {
-        width: 140px;
-    }
-
-    .sust-logo {
-        max-width: 220px;
+/* Mobile Fix */
+@media (max-width: 600px) {
+    .impact-stats-card {
+        flex-direction: column;
     }
 }
