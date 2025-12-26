@@ -317,7 +317,7 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 
 .blowing-leaf {
     position: absolute;
-    width: 100px;  /* Adjust size as needed */
+    width: 200px;  /* Adjust size as needed */
     bottom: 20%;   /* Height from the bottom */
     z-index: 10;
     opacity: 0.8;
@@ -347,5 +347,5 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 .leaf-2 {
     animation-delay: 4s; /* This leaf starts 4 seconds after the first one */
     bottom: 40%;         /* Different height */
-    width: 70px;         /* Different size */
+    width: 150px;         /* Different size */
 }
