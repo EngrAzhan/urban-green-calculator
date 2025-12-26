@@ -432,16 +432,6 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     filter: contrast(1.1);
 }
 
-.sun-img {
-    position: absolute;
-    top: -30px;
-    right: 220px;
-    width: 60px;
-    z-index: 10;
-    mix-blend-mode: multiply;
-    animation: sun-glow 3s infinite ease-in-out; /* Smooth clean energy pulse */
-}
-
 
 /* --- DESKTOP (Screens wider than 768px) --- */
 @media (min-width: 768px) {
@@ -461,18 +451,6 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     50% { transform: scale(1.2); filter: brightness(1.3); }
 }
 
-.sun-rays {
-    position: absolute;
-    top: -30px;      /* Align with the center of your sun image */
-    right: -20px;    /* Align with the center of your sun image */
-    width: 60px;     /* Start small (the size of the sun) */
-    opacity: 0;
-    z-index: 9;
-    pointer-events: none;
-    
-    /* Change the animation name here */
-    animation: energy-flow 2s infinite ease-in; 
-}
 
 /* --- NEW SOLAR ENERGY ANIMATION --- */
 @keyframes energy-flow {
@@ -486,6 +464,44 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     100% {
         /* This moves the rays DOWN and LEFT toward the panel */
         transform: scale(1.5) translate(-100px, 100px); 
+        opacity: 0; /* Fades out as it hits the panel */
+    }
+}
+.sun-img {
+    position: absolute;
+    top: -20px;
+    left: 0px;        /* Moves sun to the TOP-LEFT */
+    width: 60px;
+    z-index: 10;
+    mix-blend-mode: multiply; /* Hides white box if JPG */
+}
+
+.sun-rays {
+    position: absolute;
+    top: 0px;         /* Align with center of sun */
+    left: 10px;       /* Align with center of sun */
+    width: 50px;      /* Start small */
+    opacity: 0;
+    z-index: 9;
+    
+    /* FIX VISIBILITY: Multiply hides yellow on white. Use 'initial' or 'screen' instead */
+    mix-blend-mode: initial; 
+    filter: brightness(1.5) saturate(2); /* Makes rays bright yellow */
+    
+    animation: energy-flow 2s infinite ease-in;
+}
+@keyframes energy-flow {
+    0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1; /* Light becomes bold yellow as it leaves the sun */
+    }
+    100% {
+        /* This pushes the rays toward the panel at the bottom-right */
+        /* Adjust 180px and 120px until it hits your panel perfectly */
+        transform: translate(180px, 120px) scale(2); 
         opacity: 0; /* Fades out as it hits the panel */
     }
 }
