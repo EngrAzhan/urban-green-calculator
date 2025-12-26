@@ -316,7 +316,7 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     position: absolute;
     bottom: -20px;   /* Positions it at the bottom */
     right: -10px;    /* Positions it at the right */
-    width: 1000px;    /* Size of the leaves */
+    width: 400px;    /* Size of the leaves */
     pointer-events: none; /* So you can still click text behind them */
     z-index: 5;
     
@@ -327,5 +327,5 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 
 @keyframes sway {
     from { transform: rotate(0deg); }
-    to { transform: rotate(12deg); }
+    to { transform: rotate(8deg); }
 }
