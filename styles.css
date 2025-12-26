@@ -398,15 +398,36 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     }
 }
 .generator-container {
-    position: relative;
-    /* 1. Makes the generator smaller (adjust this number as you like) */
-    width: 300px; 
+    /* Absolute keeps it from pushing the 'Next' button down */
+    position: absolute; 
+    top: 50%;           /* Moves it towards the vertical center of the box */
+    right: 20px;        /* Anchors it to the right */
+    transform: translateY(-50%); /* Perfectly centers it vertically */
     
-    /* 2. Moves it to the right side of the white box */
-    margin-left: auto; 
-    margin-right: 0;
-    
-    margin-top: 40px;
-    margin-bottom: 80px;
-    padding: 10px;
+    /* Smaller size to prevent vertical stretching */
+    width: 150px;       
+    margin: 0;          /* Removes margins that create extra white space */
+    padding: 0;
+    z-index: 10;
+}
+
+/* Make sure the white step box doesn't have too much empty 'air' */
+.step {
+    position: relative; /* Required for the absolute generator to stay inside */
+    padding: 20px 40px; /* Tightens the top and bottom gaps */
+    min-height: 250px;  /* Ensures room for the generator without being too tall */
+}
+
+/* Tighten the space between your input labels */
+#step1 label {
+    margin-bottom: 10px; 
+    max-width: 60%;     /* Keeps text on the left so it doesn't hit the generator */
+}
+@keyframes exhaust-flow {
+    0% { transform: translate(0, 0) scale(0.3); opacity: 0; }
+    100% {
+        /* -80px moves it left towards your text, staying inside the box */
+        transform: translate(-80px, -120px) scale(2.5); 
+        opacity: 0;
+    }
 }
