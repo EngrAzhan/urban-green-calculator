@@ -612,3 +612,67 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 .cool-nav {
     margin: 50px auto 20px auto !important; 
 }
+/* Visible Title Styling */
+.main-project-title {
+    color: #2d6a4f;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+/* The Dark Floating Bar */
+.cool-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1c22; /* Dark grey from your reference */
+    padding: 10px 20px;
+    border-radius: 50px;
+    width: fit-content;
+    margin: 0 auto;
+    height: 60px;
+    position: relative;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #999; /* Faded color for non-active icons */
+    margin: 0 15px;
+    font-size: 11px;
+}
+
+/* The Blue Popped-Out Circle */
+.active-circle {
+    background: #00a8ff; /* Branded Blue */
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -35px; /* Pops it up */
+    border: 5px solid #f4f7f6; /* Change this to match your page background color */
+    box-shadow: 0 5px 15px rgba(0, 168, 255, 0.4);
+}
+
+.nav-item.active i {
+    color: white;
+    font-size: 1.4rem;
+}
+
+.nav-item.active span {
+    color: white;
+    margin-top: 38px; /* Pushes text below the circle */
+    font-weight: bold;
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+}
