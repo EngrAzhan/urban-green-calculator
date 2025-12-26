@@ -316,7 +316,7 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     position: absolute;
     bottom: -20px;   /* Positions it at the bottom */
     right: -10px;    /* Positions it at the right */
-    width: 120px;    /* Size of the leaves */
+    width: 400px;    /* Size of the leaves */
     pointer-events: none; /* So you can still click text behind them */
     z-index: 5;
     
