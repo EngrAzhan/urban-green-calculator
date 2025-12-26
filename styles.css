@@ -384,7 +384,7 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     transform: translateY(-50%); /* Perfectly centers it vertically */
     
     /* Smaller size to prevent vertical stretching */
-    width: 150px;       
+    width: 200px;       
     margin: 0;          /* Removes margins that create extra white space */
     padding: 0;
     z-index: 10;
