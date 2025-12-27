@@ -7,9 +7,78 @@
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* 1. Background Image - Tree on the Right */
+    body { 
+      margin: 0;
+      padding: 0;
+      /* Using your team-bg.png, aligned to the right */
+      background: linear-gradient(rgba(11, 15, 13, 0.85), rgba(11, 15, 13, 0.85)), 
+                  url('team-bg.png') no-repeat right center fixed;
+      background-size: cover;
+      color: #ffffff;
+      overflow-x: hidden; /* Important to hide smoke overflow */
+    }
+
+    /* 2. Smoke Animation Styling */
+    .smoke-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Behind text, above bg image */
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    .smoke-cloud {
+      position: absolute;
+      width: 250%; /* Larger than screen for movement */
+      height: 250%;
+      background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); 
+      filter: url(#turbulent-smoke); /* Links to the SVG filter below */
+      animation: drift-random 45s linear infinite;
+    }
+
+    @keyframes drift-random {
+      0% { transform: translate(-30%, 0); }
+      50% { transform: translate(0%, -5%); }
+      100% { transform: translate(30%, -10%); }
+    }
+
+    /* Ensuring main content stays readable */
+    main {
+      position: relative;
+      z-index: 1;
+      padding-top: 40px;
+    }
+
+    section.container {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+    }
+  </style>
 </head>
 
 <body class="theme-green">
+
+  <svg width="0" height="0" style="position: absolute;">
+    <filter id="turbulent-smoke">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="5">
+        <animate attributeName="baseFrequency" dur="40s" values="0.012;0.025;0.012" repeatCount="indefinite" />
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" scale="120" />
+    </filter>
+  </svg>
+  
+  <div class="smoke-canvas">
+    <div class="smoke-cloud"></div>
+  </div>
+
   <header class="site-header">
     <div class="container">
       <div class="brand-title">
@@ -22,24 +91,20 @@
           <i class="fa-solid fa-house"></i>
           <span>Home</span>
         </a>
-
         <a href="calculator.html" class="nav-item">
           <i class="fa-solid fa-calculator"></i>
           <span>Calculator</span>
         </a>
-
         <a href="theory.html" class="nav-item active">
           <div class="active-circle">
             <i class="fa-solid fa-book"></i>
           </div>
           <span>Theory</span>
         </a>
-
         <a href="trees.html" class="nav-item">
           <i class="fa-solid fa-tree"></i>
           <span>Trees</span>
         </a>
-
         <a href="about.html" class="nav-item">
           <i class="fa-solid fa-user"></i>
           <span>About</span>
@@ -47,9 +112,10 @@
       </nav>
     </div>
   </header>
+
   <main>
     <section class="container">
-      <h2>Carbon & Fuel Theory</h2>
+      <h2 style="color: #2ecc71;">Carbon & Fuel Theory</h2>
       <p>This page explains the core formulas used by the calculator and the sources for default values (Karachi-based).</p>
 
       <h3>Key Equations</h3>
@@ -71,8 +137,7 @@
       </ul>
 
       <h3>Notes on assumptions</h3>
-      <p>All assumptions are cited in the report. The calculator uses simple engineering approximations for clarity and teaching purposes. For high-precision projects, include generator-specific fuel curves and PV performance ratio.</p>
-
+      <p>All assumptions are cited in the report. The calculator uses simple engineering approximations for clarity and teaching purposes.</p>
     </section>
   </main>
 
