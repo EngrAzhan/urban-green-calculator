@@ -9,88 +9,99 @@
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* 1. Reset to White Background */
+    /* 1. Pure White Background & Sharp Text */
     body { 
       margin: 0;
       padding: 0;
-      background: #ffffff; /* Pure white background */
-      color: #2c3e50;    /* Dark professional text color */
+      background: #ffffff; 
+      color: #2c3e50; 
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden; /* Prevents smoke from causing horizontal scroll */
+      overflow-x: hidden; 
     }
 
-    /* 2. Smoke Animation Styling */
+    /* 2. Randomized Smoke Animation (Moving Left to Right) */
     .smoke-canvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1; /* Behind text */
+      z-index: -1; 
       pointer-events: none;
-      opacity: 0.12; /* Very subtle on white background */
     }
 
-    .smoke-cloud {
+    .smoke-layer {
       position: absolute;
-      width: 300%; 
-      height: 200%;
-      /* Darker texture to ensure it's visible on white */
-      background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); 
-      filter: url(#turbulent-smoke); 
-      animation: drift-random 50s linear infinite;
+      width: 400%; 
+      height: 100%;
+      background: url('smokey.png') repeat-x; 
+      background-size: contain;
+      opacity: 0.15;
     }
 
-    @keyframes drift-random {
-      0% { transform: translate(-40%, 0); }
-      50% { transform: translate(-10%, -5%); }
-      100% { transform: translate(30%, -10%); }
+    /* Faster, smaller smoke clouds */
+    .smoke-1 {
+      top: 0;
+      animation: smokeDrift 35s linear infinite;
     }
 
-    /* Content Layout Adjustments */
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
+    /* Slower, larger smoke clouds for a "random" look */
+    .smoke-2 {
+      top: 20%;
+      opacity: 0.1;
+      animation: smokeDrift 55s linear infinite reverse;
+      transform: scaleY(1.5);
+    }
+
+    @keyframes smokeDrift {
+      from { transform: translateX(-50%); }
+      to { transform: translateX(0%); }
+    }
+
+    /* 3. Tree Positioned on the Right */
+    .tree-right {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 450px; /* Adjust size as needed */
+      z-index: -1;
+      opacity: 1; /* Keeping tree sharp */
+      pointer-events: none;
+    }
+
+    /* 4. Sharp Layout (No Blurry Effects) */
+    main {
+      position: relative;
+      z-index: 10;
+      padding: 40px 0;
+    }
+
+    section.container {
+      background: transparent; /* Removed all blur and dark boxes */
       padding: 20px;
     }
 
-    h2, h3 {
-      color: #27ae60; /* Green accents for the theme */
-    }
+    h2, h3 { color: #27ae60; border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; }
+    li { margin-bottom: 15px; line-height: 1.6; }
+    strong { color: #1a252f; }
 
-    main {
-      padding: 40px 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    li {
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }
   </style>
 </head>
 
 <body class="theme-green">
 
-  <svg width="0" height="0" style="position: absolute;">
-    <filter id="turbulent-smoke">
-      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="5">
-        <animate attributeName="baseFrequency" dur="40s" values="0.012;0.022;0.012" repeatCount="indefinite" />
-      </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" scale="100" />
-    </filter>
-  </svg>
-  
   <div class="smoke-canvas">
-    <div class="smoke-cloud"></div>
+    <div class="smoke-layer smoke-1"></div>
+    <div class="smoke-layer smoke-2"></div>
   </div>
+
+  <img src="treee.png" class="tree-right" alt="Green Mitigation Tree">
 
   <header class="site-header">
     <div class="container">
       <div class="brand-title">
-        <h1 style="color: #ffffff;">Sustainable Energy & Urban Green Mitigation</h1>
-        <p style="color: #ffffff; opacity: 0.9;">Developed by Engr. Azhan Ahmed</p>
+        <h1 style="color: white;">Sustainable Energy & Urban Green Mitigation</h1>
+        <p style="color: white; opacity: 0.9;">Developed by Engr. Azhan Ahmed</p>
       </div>
 
       <nav class="cool-nav">
@@ -140,11 +151,11 @@
         <li><strong>Diesel price:</strong> 285 PKR/L (PSO retail prices, 2024)</li>
         <li><strong>Sun hours:</strong> 5.5 h/day (NREL / AEDB datasets)</li>
         <li><strong>CO₂ factor:</strong> 2.68 kg CO₂/L (IPCC)</li>
-        <li><strong>Fuel efficiency (example):</strong> 2.2 L/h for a 10 kW genset (manufacturer curves)</li>
+        <li><strong>Fuel efficiency:</strong> Approximately 2.2 L/h for a 10 kW genset</li>
       </ul>
 
       <h3>Notes on Assumptions</h3>
-      <p>All assumptions are cited in the report. The calculator uses simple engineering approximations for clarity and teaching purposes. For high-precision projects, include generator-specific fuel curves and PV performance ratio.</p>
+      <p>The calculator uses engineering approximations for educational purposes. All assumptions are cited in the project report.</p>
     </section>
   </main>
 
