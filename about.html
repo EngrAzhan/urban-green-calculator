@@ -7,43 +7,51 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Clean background for the page */
-    body { background: #f8faf9; }
+    /* Dark Theme Setup */
+    body { 
+      background: #0b0f0d; /* Deep Blackish Green */
+      color: #ffffff; 
+    }
 
-    /* Glassmorphism Section Styling */
-    .about-content { padding: 40px 0; }
-    
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
+    .about-content { padding: 60px 0; }
+
+    /* THE BIG GLASS BOX - Dark Mode */
+    .big-glass-box {
+      background: rgba(255, 255, 255, 0.03); 
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 40px;
+      padding: 60px 30px;
       margin: 40px 0;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
     }
 
-    /* Green Glass Card */
-    .team-card {
-      background: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(46, 204, 113, 0.25);
-      border-radius: 24px;
-      padding: 35px 20px;
+    /* FORCED HORIZONTAL ROW */
+    .team-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: stretch;
+      gap: 15px;
+      flex-wrap: nowrap; /* Prevents wrapping on desktop */
+    }
+
+    .member-card {
+      flex: 1;
       text-align: center;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 10px 30px rgba(0, 77, 64, 0.04);
+      padding: 10px;
+      transition: transform 0.3s ease;
     }
 
-    .team-card:hover {
-      transform: translateY(-12px);
-      background: rgba(255, 255, 255, 0.75);
-      border-color: rgba(46, 204, 113, 0.5);
-      box-shadow: 0 15px 35px rgba(46, 204, 113, 0.1);
+    .member-card:hover {
+      transform: translateY(-10px);
     }
 
     .member-image-wrapper {
       position: relative;
-      width: 140px;
-      height: 140px;
+      width: 130px;
+      height: 130px;
       margin: 0 auto 20px;
     }
 
@@ -52,7 +60,7 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #ffffff;
+      border: 3px solid rgba(255, 255, 255, 0.2);
       position: relative;
       z-index: 2;
     }
@@ -63,21 +71,21 @@
       left: 50%;
       transform: translateX(-50%);
       background: #2ecc71;
-      color: white;
-      width: 30px;
-      height: 30px;
+      color: #000;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      line-height: 30px;
+      line-height: 28px;
       font-weight: bold;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       z-index: 3;
     }
 
     /* Decorative Arcs */
     .arc {
       position: absolute;
-      width: 156px;
-      height: 156px;
+      width: 146px;
+      height: 146px;
       top: -8px;
       left: -8px;
       border-radius: 50%;
@@ -90,26 +98,32 @@
     .arc-3 { border-bottom-color: #e67e22; border-left-color: #e67e22; }
     .arc-4 { border-bottom-color: #9b59b6; border-left-color: #9b59b6; }
 
-    .team-card h4 {
-      margin: 10px 0 5px;
-      color: #004d40;
-      font-size: 1.25rem;
+    .member-card h4 {
+      margin: 15px 0 5px;
+      color: #ffffff;
+      font-size: 1.1rem;
     }
 
     .role {
-      color: #27ae60;
-      font-weight: 600;
-      font-size: 0.85rem;
+      color: #2ecc71;
+      font-weight: 700;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .bio {
-      font-size: 0.85rem;
-      color: #5f6368;
-      line-height: 1.6;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.5;
+    }
+
+    /* Responsive: only stack on very small mobile screens */
+    @media (max-width: 768px) {
+      .team-row { flex-wrap: wrap; }
+      .member-card { flex: 1 1 45%; margin-bottom: 20px; }
     }
   </style>
 </head>
@@ -148,15 +162,15 @@
 
   <main class="container about-content">
     <section>
-      <h2>About this Project</h2>
-      <p>Developed by students of the Department of Civil Engineering, NED University. This tool is for educational purposes and to support small-scale planning for renewable adoption and urban forestry in Karachi.</p>
+      <h2 style="color: #2ecc71;">About this Project</h2>
+      <p style="opacity: 0.8;">Developed by students of the Department of Civil Engineering, NED University. This tool is for educational purposes and to support small-scale planning for renewable adoption and urban forestry in Karachi.</p>
     </section>
 
-    <section>
-      <h3 style="margin-top: 40px; text-align: center;">Group Members</h3>
-      <div class="team-grid">
-        
-        <div class="team-card">
+    <section class="big-glass-box">
+      <h3 style="margin-bottom: 40px; text-align: center; color: #fff;">Group Members</h3>
+      
+      <div class="team-row">
+        <div class="member-card">
           <div class="member-image-wrapper">
             <div class="member-number">01</div>
             <img src="azhan.jpeg" alt="Azhan Ahmed" class="member-img">
@@ -164,10 +178,10 @@
           </div>
           <h4>Azhan Ahmed</h4>
           <span class="role">Project Lead</span>
-          <p class="bio">Lead engineer for the sustainable energy project, specialized in carbon footprint and solar analysis.</p>
+          <p class="bio">Lead engineer, specialized in carbon footprint and solar analysis.</p>
         </div>
 
-        <div class="team-card">
+        <div class="member-card">
           <div class="member-image-wrapper">
             <div class="member-number">02</div>
             <img src="hamza.jpeg" alt="Muhammad Hamza" class="member-img">
@@ -175,21 +189,21 @@
           </div>
           <h4>Muhammad Hamza</h4>
           <span class="role">Technical Researcher</span>
-          <p class="bio">Focused on data collection for diesel generator emission factors and efficiency metrics.</p>
+          <p class="bio">Focused on diesel generator emission factors and efficiency metrics.</p>
         </div>
 
-        <div class="team-card">
+        <div class="member-card">
           <div class="member-image-wrapper">
             <div class="member-number">03</div>
             <img src="kumar.jpeg" alt="Varindher Kumar" class="member-img">
             <div class="arc arc-3"></div>
           </div>
           <h4>Varindher Kumar</h4>
-          <span class="role">Environmental Analyst</span>
-          <p class="bio">Developed the urban tree sequestration models based on Karachi-specific botanical studies.</p>
+          <span class="role">Env. Analyst</span>
+          <p class="bio">Developed urban tree sequestration models for Karachi botanical studies.</p>
         </div>
 
-        <div class="team-card">
+        <div class="member-card">
           <div class="member-image-wrapper">
             <div class="member-number">04</div>
             <img src="khizer.jpg" alt="Khizer Waseem" class="member-img">
@@ -197,18 +211,18 @@
           </div>
           <h4>Khizer Waseem</h4>
           <span class="role">Data Scientist</span>
-          <p class="bio">Managed the project calculations and coordinated literature review from Pakistan Journal of Botany.</p>
+          <p class="bio">Managed calculations and coordinated the literature review.</p>
         </div>
-
       </div>
     </section>
+
     <section>
-      <h3>References</h3>
-      <p>Key references: PSO fuel prices, IPCC emission factors, Bano et al. (Safari Park), Pakistan Journal of Botany (urban trees).</p>
+      <h3 style="color: #2ecc71;">References</h3>
+      <p style="opacity: 0.7;">Key references: PSO fuel prices, IPCC emission factors, Bano et al. (Safari Park), Pakistan Journal of Botany (urban trees).</p>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" style="background: #000; border-top: 1px solid rgba(255,255,255,0.1);">
     <div class="container">Prepared for EN–404 • NED University</div>
   </footer>
 
