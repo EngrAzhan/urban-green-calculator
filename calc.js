@@ -24,23 +24,20 @@ function calculate(){
   const costDay = fuelDay * price;
   const dieselEnergy = P * H;
   const solarEnergy = S * sun;
-  const replacedFraction = dieselEnergy>0? Math.min(solarEnergy/dieselEnergy,1):0;
+  const replacedFraction = dieselEnergy > 0 ? Math.min(solarEnergy/dieselEnergy, 1) : 0;
+  
   const annualCO2saved = co2Day * 365 * replacedFraction;
   const annualFuelCost = costDay * 365;
   const annualSavings = Math.max(0, annualFuelCost * replacedFraction - maint);
-  const payback = annualSavings>0? (install/annualSavings):0;
+  const payback = annualSavings > 0 ? (install/annualSavings) : 0;
 
-  // ... (keep all your math variables like annualCO2saved)
- 
-  // 1. Calculate Total Annual CO2 produced by the generator
+  // --- NEW LOGIC FOR REMAINING DEBT ---
   const totalAnnualCO2 = co2Day * 365;
-
-  // 2. Calculate the Remaining Carbon (The Debt)
   const remainingCO2 = Math.max(0, totalAnnualCO2 - annualCO2saved);
+  // Calculate trees needed to offset what the solar panels missed
+  const treesNeeded = Math.ceil(remainingCO2 / 22); 
 
-  // 3. Calculate Trees needed for the REMAINING balance (using 22kg/tree)
-  const trees = Math.ceil(remainingCO2 / 22);
-  // ANIMATING ALL RESULTS (Keep these lines)
+  // ANIMATING ALL RESULTS
   animateValue("fuelDay", 0, fuelDay, 1000);
   animateValue("co2Day", 0, co2Day, 1000);
   animateValue("costDay", 0, costDay, 1000);
@@ -48,20 +45,18 @@ function calculate(){
   animateValue("solarEnergy", 0, solarEnergy, 1000);
   animateValue("annualCO2", 0, annualCO2saved, 1200);
   animateValue("payback", 0, payback, 1000);
-  // EDIT HERE: Add these lines at the end of the function
-  const trees = Math.round(annualCO2saved / 22);
+
+  // UPDATE THE HERO DISPLAY
   const heroDisplay = document.getElementById('tree-count-hero');
   if (heroDisplay) {
-    heroDisplay.innerText = trees.toLocaleString();
+    heroDisplay.innerText = treesNeeded.toLocaleString();
   }
-  // Give the animation 1.5 seconds to finish before switching screens
+
+  // Final Impact Screen delay
   setTimeout(() => {
     document.getElementById('final-impact').style.display = 'block';
   }, 1500);
-
-} // This is the final closing bracket for the calculate function
-
-  
+}
 
 function animateValue(id, start, end, duration) {
     let obj = document.getElementById(id);
@@ -92,6 +87,7 @@ function animateValue(id, start, end, duration) {
     }
     requestAnimationFrame(run);
 }
+
 
 
 
