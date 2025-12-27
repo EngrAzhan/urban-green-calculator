@@ -660,3 +660,13 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     color: #ffffff;
     font-weight: bold;
 }
+body { 
+  margin: 0;
+  padding: 0;
+  /* Updated extension to .png */
+  background: linear-gradient(rgba(11, 15, 13, 0.88), rgba(11, 15, 13, 0.88)), 
+              url('team-bg.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
