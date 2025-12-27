@@ -7,14 +7,97 @@
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* 1. Reset to Pure White and Sharp Text */
+    body { 
+      margin: 0;
+      padding: 0;
+      background: #ffffff; 
+      color: #2c3e50; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* 2. Content Layout (No Blurs) */
+    main {
+      padding: 40px 0;
+    }
+
+    section.container {
+      background: transparent; 
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* 3. Table Styling */
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      background: #ffffff;
+    }
+
+    table.data th, table.data td {
+      border: 1px solid #e0e0e0;
+      padding: 15px;
+      text-align: left;
+    }
+
+    table.data th {
+      background-color: #27ae60;
+      color: white;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    table.data tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* 4. Map Section Styling */
+    .map-section {
+      margin-top: 60px;
+      padding: 20px 0;
+    }
+
+    .map-frame {
+      border: 1px solid #d1d1d1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      background: #fff;
+    }
+
+    h2, h3, h4 { 
+      color: #27ae60; 
+      border-bottom: 2px solid #f1f1f1;
+      padding-bottom: 8px;
+    }
+
+    .recommend {
+      background: #f1f9f4;
+      padding: 20px;
+      border-left: 5px solid #27ae60;
+      border-radius: 5px;
+      margin: 30px 0;
+    }
+
+    .recommend ul {
+      padding-left: 20px;
+    }
+  </style>
 </head>
 
 <body class="theme-green">
+
   <header class="site-header">
     <div class="container">
       <div class="brand-title">
-        <h1>Sustainable Energy & Urban Green Mitigation</h1>
-        <p>Developed by Engr. Azhan Ahmed</p>
+        <h1 style="color: white;">Sustainable Energy & Urban Green Mitigation</h1>
+        <p style="color: white; opacity: 0.9;">Developed by Engr. Azhan Ahmed</p>
       </div>
 
       <nav class="cool-nav">
@@ -22,24 +105,20 @@
           <i class="fa-solid fa-house"></i>
           <span>Home</span>
         </a>
-
         <a href="calculator.html" class="nav-item">
           <i class="fa-solid fa-calculator"></i>
           <span>Calculator</span>
         </a>
-
         <a href="theory.html" class="nav-item">
           <i class="fa-solid fa-book"></i>
           <span>Theory</span>
         </a>
-
         <a href="trees.html" class="nav-item active">
           <div class="active-circle">
             <i class="fa-solid fa-tree"></i>
           </div>
           <span>Trees</span>
         </a>
-
         <a href="about.html" class="nav-item">
           <i class="fa-solid fa-user"></i>
           <span>About</span>
@@ -48,39 +127,62 @@
     </div>
   </header>
 
-
   <main>
     <section class="container">
       <h2>Urban Trees & Carbon Sequestration</h2>
-      <p>This page summarizes tree species and sequestration values compiled from local studies (Bano et al., Shehzad et al., Pakistan Journal of Botany).</p>
+      <p>This page summarizes tree species and sequestration values compiled from local studies (Bano et al., Shehzad et al., Pakistan Journal of Botany) specifically for the climate of Karachi.</p>
 
       <table class="data">
-        <thead><tr><th>Species</th><th>Growth Type</th><th>CO₂ absorbed (kg/year)</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Species Name</th>
+            <th>Growth Characteristics</th>
+            <th>CO₂ Absorbed (kg/year)</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>Azadirachta indica (Neem)</td><td>Fast-growing</td><td>30–35</td></tr>
-          <tr><td>Ficus religiosa (Peepal)</td><td>Large canopy</td><td>25–30</td></tr>
-          <tr><td>Cassia fistula (Amaltas)</td><td>Medium</td><td>20–25</td></tr>
-          <tr><td>Delonix regia (Gulmohar)</td><td>Medium</td><td>18–22</td></tr>
-          <tr><td>Conocarpus erectus</td><td>Shrub-like</td><td>10–15</td></tr>
+          <tr><td><strong>Azadirachta indica (Neem)</strong></td><td>Fast-growing / High Shade</td><td>30–35</td></tr>
+          <tr><td><strong>Ficus religiosa (Peepal)</strong></td><td>Large canopy / Sacred Fig</td><td>25–30</td></tr>
+          <tr><td><strong>Cassia fistula (Amaltas)</strong></td><td>Medium / Ornamental</td><td>20–25</td></tr>
+          <tr><td><strong>Delonix regia (Gulmohar)</strong></td><td>Medium / Flowering</td><td>18–22</td></tr>
+          <tr><td><strong>Conocarpus erectus</strong></td><td>Drought resistant</td><td>10–15</td></tr>
         </tbody>
       </table>
 
-      <h3>How to compute trees needed</h3>
-      <p>Number of trees = Annual CO₂ emissions (kg) / CO₂ absorbed per tree (kg/year). Use the "Annual CO₂ saved" number from the calculator result to estimate planting needs.</p>
+      <h3>Calculating Green Mitigation</h3>
+      <p>To find out how many trees you need to offset your emissions: <br>
+      <strong>Formula:</strong> <em>Total Annual CO₂ (from Calculator) ÷ CO₂ absorbed per tree</em></p>
 
       <div class="recommend">
-        <h4>Recommendations</h4>
+        <h4>Planting Best Practices</h4>
         <ul>
-          <li>Plant a mix of native species (Neem, Peepal, Amaltas) for high sequestration and biodiversity.</li>
-          <li>Ensure watering and protection during the first 2 years.</li>
-          <li>Prefer off-road planting where survival and growth rates are higher.</li>
+          <li><strong>Diversity:</strong> Do not plant just one species; a mix of Neem and Amaltas improves urban biodiversity.</li>
+          <li><strong>Placement:</strong> Plant on the western side of buildings to block the hot afternoon sun.</li>
+          <li><strong>Maintenance:</strong> Local Karachi soil needs deep watering twice a week for young saplings.</li>
         </ul>
       </div>
+
+      <section class="map-section">
+        <h3>Karachi Priority Planting Map</h3>
+        <p>Interactive view of Karachi's urban layout. Use this to identify areas with high concrete density for mitigation planning.</p>
+        <div class="map-frame">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d231739.04368598823!2d66.86440266042735!3d24.84083315802521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e0660293db7%3A0xad7ad15a2ad28500!2sKarachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+            width="100%" 
+            height="500" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </section>
+
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">Data sources: Bano et al., Shehzad et al., local studies.</div>
+    <div class="container">Data sources: Bano et al., Shehzad et al., NED University Archives.</div>
   </footer>
 
   <script src="common.js"></script>
