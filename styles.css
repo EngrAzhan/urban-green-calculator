@@ -905,36 +905,55 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 }
 
 
-/* Responsive Fix for the Dark Navigation Pill */
-@media (max-width: 600px) {
-    .cool-nav {
-        /* 1. Allow the pill to be narrower */
-        width: 90%; 
-        max-width: 400px;
-        margin: 0 auto;
-        
-        /* 2. Reduce the gap between items so they fit */
-        gap: 10px; 
-        padding: 10px 15px;
-        
-        /* 3. Make sure it doesn't overlap the logo/text above it */
-        position: relative;
-        top: 0; 
+/* MOBILE FIX FOR NAVIGATION PILL */
+@media (max-width: 768px) {
+    /* 1. Make the header flexible */
+    .header-layout {
+        flex-direction: column;
+        padding: 10px;
+        gap: 15px;
     }
 
+    /* 2. Make the pill fluid so it fits any phone screen */
+    .cool-nav {
+        width: 95%;         /* Uses 95% of screen width */
+        max-width: 380px;   /* Prevents it from getting too big */
+        padding: 8px 10px;  /* Reduces internal padding */
+        gap: 5px;           /* Tightens space between items */
+        margin: 20px auto;  /* Centers it on the screen */
+        height: auto;       /* Let it adjust height if items wrap */
+    }
+
+    /* 3. Scale down the navigation items */
     .nav-item {
-        /* 4. Make the icons and text smaller for mobile */
-        font-size: 0.65rem; 
+        flex: 1;            /* Each item gets equal space */
+        min-width: 0;       /* Prevents items from pushing each other out */
     }
 
     .nav-item i {
-        font-size: 1rem; /* Smaller icons */
+        font-size: 1rem;    /* Smaller icons for mobile */
     }
 
+    .nav-item span {
+        font-size: 0.65rem; /* Smaller text for mobile */
+        display: block;
+    }
+
+    /* 4. Scale down the active floating circle */
     .active-circle {
-        /* 5. Shrink the green floating circle on mobile */
-        width: 35px;
-        height: 35px;
-        top: -12px;
+        width: 40px;        /* Smaller circle for mobile */
+        height: 40px;
+        top: -15px;         /* Adjusts how high it floats */
+        border-width: 3px;  /* Thinner border for better scale */
+    }
+    
+    .active-circle i {
+        font-size: 1.1rem;
+    }
+
+    /* 5. Fix the logo and title size so they don't crowd the screen */
+    .brand-title h1 {
+        font-size: 1.3rem;
+        line-height: 1.2;
     }
 }
