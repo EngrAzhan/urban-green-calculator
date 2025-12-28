@@ -87,7 +87,89 @@
 
             <div class="note-card rotate-R push-down">
                 <div class="spiral-wire"></div>
-                <div class="note-content">
+                <div class="note-content"><style>
+    /* Background changed from blue to a professional light workspace tone */
+    .notebook-page {
+        background-color: #f8f9fa; /* Light grey/off-white */
+        background-image: radial-gradient(#d1d1d1 1.2px, transparent 1.2px);
+        background-size: 30px 30px; /* Subtle dot-grid pattern */
+        color: #333;
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .notebook-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 60px 40px;
+    }
+
+    /* Hero text adjusted for the lighter background */
+    .notebook-hero {
+        color: #1a5e38; /* Dark green text */
+        border-left: 8px solid #2ecc71;
+        padding-left: 20px;
+        margin-bottom: 60px;
+    }
+
+    /* The Note Card - kept the perfect shape but softened the shadow */
+    .note-card {
+        background: #ffffff;
+        display: flex;
+        min-height: 300px;
+        box-shadow: 8px 8px 25px rgba(0,0,0,0.08); /* Softer shadow for light bg */
+        border-radius: 5px;
+        position: relative;
+        transition: 0.3s ease;
+        border: 1px solid #eee; /* Added a thin border to define the paper edge */
+    }
+
+    /* Spiral Wire - adjusted colors to look better on light bg */
+    .spiral-wire {
+        width: 40px;
+        background: #f1f1f1; /* Slightly darker than paper */
+        border-right: 1px solid #ddd;
+        position: relative;
+        background-image: radial-gradient(#666 5px, transparent 6px);
+        background-size: 100% 30px;
+        background-position: center;
+    }
+
+    .spiral-wire::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 10px;
+        width: 25px;
+        height: 100%;
+        /* Metallic wire look */
+        background-image: linear-gradient(transparent 10px, #999 12px, #444 15px, #999 18px, transparent 20px);
+        background-size: 100% 30px;
+        z-index: 5;
+    }
+
+    /* Formatting the text inside */
+    .note-content { padding: 35px; flex: 1; text-align: left; }
+    .date-stamp { font-weight: bold; color: #2ecc71; font-size: 0.8rem; border-bottom: 2px solid #e9f7ef; display: inline-block; margin-bottom: 10px; }
+    .note-content h3 { color: #1a5e38; margin-top: 5px; font-size: 1.6rem; }
+    .note-content p { color: #555; line-height: 1.7; }
+
+    /* The Zig-Zag staggered layout you liked */
+    .rotate-L { transform: rotate(-1.5deg); }
+    .rotate-R { transform: rotate(1.8deg); }
+    .push-down { margin-top: 100px; }
+
+    .note-card:hover {
+        transform: rotate(0deg) translateY(-10px);
+        box-shadow: 0 15px 35px rgba(46, 204, 113, 0.2);
+        z-index: 10;
+    }
+
+    /* Responsive fix */
+    @media (max-width: 1000px) {
+        .spiral-grid { grid-template-columns: 1fr; }
+        .push-down { margin-top: 20px; }
+    }
+</style>
                     <span class="date-stamp">LOG #06</span>
                     <h3>The Path to Net Zero</h3>
                     <p>Achieving "Net Zero" means your greenhouse gases emitted are perfectly balanced by those removed. Solar energy is the first line of defense—reducing the "source" of the pollution. For the remaining energy, trees bridge the gap. This hybrid approach ensures a mathematically sound roadmap toward a sustainable lifestyle.</p>
@@ -97,100 +179,6 @@
         </div>
     </main>
 
-    <style>
-        /* Backdrop: Dark Desk to reduce Whiteness */
-        .notebook-page {
-            background-color: #2c3e50;
-            background-image: linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            color: #333;
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        .notebook-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px;
-        }
-
-        .notebook-hero {
-            color: #fff;
-            border-left: 8px solid #2ecc71;
-            padding-left: 20px;
-            margin-bottom: 60px;
-        }
-
-        .notebook-hero h1 { font-size: 3.5rem; margin: 0; }
-
-        .spiral-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        /* The Note Card */
-        .note-card {
-            background: #fff;
-            display: flex;
-            min-height: 300px;
-            box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
-            border-radius: 5px;
-            position: relative;
-            transition: 0.3s;
-        }
-
-        /* The Spiral Wire CSS */
-        .spiral-wire {
-            width: 40px;
-            background: #eee;
-            border-right: 2px solid #ddd;
-            position: relative;
-            background-image: radial-gradient(#555 5px, transparent 6px);
-            background-size: 100% 30px;
-            background-position: center;
-        }
-
-        .spiral-wire::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 15px;
-            width: 30px;
-            height: 100%;
-            background-image: linear-gradient(transparent 10px, #888 12px, #333 15px, #888 18px, transparent 20px);
-            background-size: 100% 30px;
-            z-index: 5;
-        }
-
-        .note-content { padding: 30px; flex: 1; }
-        .date-stamp { font-weight: bold; color: #2ecc71; font-size: 0.8rem; border-bottom: 1px solid #2ecc71; }
-        .note-content h3 { margin-top: 15px; color: #1a5e38; }
-
-        /* Rotations */
-        .rotate-L { transform: rotate(-1.2deg); }
-        .rotate-R { transform: rotate(1.5deg); }
-        .push-down { margin-top: 80px; }
-        .note-card:hover { transform: rotate(0deg) scale(1.02); z-index: 10; }
-
-        /* Full Width Journal Page */
-        .full-width-journal {
-            grid-column: span 2;
-            margin: 60px 0;
-        }
-
-        .journal-page {
-            background: #fdfdfd;
-            padding: 60px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-            border-top: 15px solid #1a5e38;
-        }
-
-        @media (max-width: 1000px) {
-            .spiral-grid { grid-template-columns: 1fr; }
-            .full-width-journal { grid-column: span 1; }
-            .push-down { margin-top: 0; }
-        }
-    </style>
+    
 </body>
 </html>
