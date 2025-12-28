@@ -909,7 +909,7 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 @media (max-width: 600px) {
     .cool-nav {
         /* 1. Allow the pill to be narrower */
-        width: 95%; 
+        width: 90%; 
         max-width: 400px;
         margin: 0 auto;
         
