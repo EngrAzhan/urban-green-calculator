@@ -6,19 +6,148 @@
   <title>Insights - Sustainable Energy and Urban Green Mitigation</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* 1. HEALTHY WORKSPACE THEME */
+    .theme-green.insights-page {
+      background-color: #f4f7f5;
+      background-image: radial-gradient(#d1dbd5 1.2px, transparent 1.2px);
+      background-size: 30px 30px;
+    }
+
+    /* 2. REFINED HEADER STYLING (Matching your screenshots) */
+    .site-header {
+      background: #1e8449; /* Solid Green Header */
+      padding: 20px 0;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-layout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-title h1 {
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    /* 3. THE NAVIGATION PILL (Consistent with Index) */
+    .cool-nav {
+      background: #12181b;
+      display: flex;
+      align-items: center;
+      padding: 8px 20px;
+      border-radius: 50px;
+      gap: 20px;
+    }
+
+    .cool-nav a {
+      color: #95a5a6;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .cool-nav a:hover, .cool-nav a.active {
+      color: #ffffff;
+    }
+
+    /* 4. DIAGONAL NOTEBOOK GRID */
+    .insights-main {
+      padding: 60px 0;
+    }
+
+    .section-heading {
+      color: #004d40;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #2ecc71;
+      display: inline-block;
+      padding-right: 30px;
+    }
+
+    .notebook-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for smaller shapes */
+      gap: 35px;
+      align-items: start;
+    }
+
+    .notebook-card {
+      background: #ffffff;
+      display: flex;
+      min-height: 220px;
+      border-radius: 4px;
+      border: 1px solid #e0e6e3;
+      box-shadow: 8px 8px 0px rgba(0,0,0,0.02);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    /* The Small Spiral Rings (Healthy Green) */
+    .spiral-spine {
+      width: 35px;
+      background: #f8faf9;
+      border-right: 1px solid #d1dbd5;
+      background-image: radial-gradient(#2ecc71 3.5px, transparent 4.5px);
+      background-size: 100% 24px;
+      background-position: center;
+    }
+
+    .card-body { padding: 25px; flex: 1; }
+    
+    .card-body h3 {
+      font-size: 1.2rem;
+      color: #1a5e38;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .card-body p {
+      font-size: 0.88rem;
+      color: #444;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* 5. DIAGONAL SCATTERING & STAGGERING */
+    .note-L { transform: rotate(-1.5deg); }
+    .note-R { transform: rotate(1.5deg); }
+    .offset-1 { margin-top: 50px; }
+    .offset-2 { margin-top: 100px; }
+
+    .notebook-card:hover {
+      transform: rotate(0deg) translateY(-10px);
+      box-shadow: 0 15px 30px rgba(46, 204, 113, 0.12);
+      border-color: #2ecc71;
+      z-index: 5;
+    }
+
+    @media (max-width: 1100px) {
+      .notebook-grid { grid-template-columns: 1fr 1fr; }
+      .offset-2 { margin-top: 0; }
+    }
+  </style>
 </head>
 
-<body class="theme-green insights-layout">
-  
+<body class="theme-green insights-page">
+
   <header class="site-header">
     <div class="container header-layout">
       <div class="logo-box">
-        <img src="logo.png" alt="CO2 Logo" class="header-logo">
+        <img src="logo.png" alt="CO2 Logo" class="header-logo" style="height: 60px;">
       </div>
+
       <div class="brand-title">
         <h1>Sustainable Energy & Urban Green Mitigation</h1>
         <p>Developed by Engr. Azhan Ahmed</p>
       </div>
+
       <nav class="cool-nav">
         <a href="index.html">Home</a>
         <a href="calculator.html">Calculator</a>
@@ -30,152 +159,65 @@
     </div>
   </header>
 
-  <main class="container notebook-container">
-    <header class="page-intro">
-      <h2>Theoretical Insights</h2>
-      <p>Exploring the synergy between renewable energy and urban nature.</p>
-    </header>
+  <main class="container insights-main">
+    <h2 class="section-heading">Theoretical Insights</h2>
 
     <div class="notebook-grid">
-      <article class="notebook-paper diag-L">
-        <div class="spiral-rings"></div>
-        <div class="paper-body">
-          <div class="topic-leaf"><i class="fa-solid fa-leaf"></i></div>
-          <h3>Diesel Combustion Mechanics</h3>
-          <p>Analysis of decentralized diesel generators reveals a direct output of $CO_2$, $NO_x$, and $PM_{2.5}$, significantly impacting Karachi's local air quality.</p>
+      <article class="notebook-card note-L">
+        <div class="spiral-spine"></div>
+        <div class="card-body">
+          <h3>Diesel Combustion Dynamics</h3>
+          <p>Analysis of decentralized diesel generators reveals a direct output of $CO_2$ and $PM_{2.5}$, significantly degrading Karachi's local air quality during load shedding.</p>
         </div>
       </article>
 
-      <article class="notebook-paper diag-R push-1">
-        <div class="spiral-rings"></div>
-        <div class="paper-body">
-          <div class="topic-leaf"><i class="fa-solid fa-bolt"></i></div>
+      <article class="notebook-card note-R offset-1">
+        <div class="spiral-spine"></div>
+        <div class="card-body">
           <h3>The Energy Gap Crisis</h3>
-          <p>Grid instability forces a shift to carbon-intensive backup power. This energy gap is the primary driver for decentralized emission growth in urban centers.</p>
+          <p>Systemic grid instability forces reliance on carbon-intensive backup power. This gap is the primary driver for decentralized emission growth.</p>
         </div>
       </article>
 
-      <article class="notebook-paper diag-L push-2">
-        <div class="spiral-rings"></div>
-        <div class="paper-body">
-          <div class="topic-leaf"><i class="fa-solid fa-sun"></i></div>
+      <article class="notebook-card note-L offset-2">
+        <div class="spiral-spine"></div>
+        <div class="card-body">
           <h3>Photovoltaic Displacement</h3>
-          <p>Solar energy integration works by displacing the thermal load of generators. Karachi's 5.5 peak sun hours allow for direct linear carbon debt reduction.</p>
+          <p>Solar PV directly offsets diesel fuel consumption. With 5.5 peak sun hours, Karachi's solar potential offers a massive carbon reduction pathway.</p>
         </div>
       </article>
 
-      <article class="notebook-paper diag-R">
-        <div class="spiral-rings"></div>
-        <div class="paper-body">
-          <div class="topic-leaf"><i class="fa-solid fa-seedling"></i></div>
+      <article class="notebook-card note-R">
+        <div class="spiral-spine"></div>
+        <div class="card-body">
           <h3>Biological Sequestration</h3>
-          <p>A mature tree acts as a biological carbon sink, absorbing approximately 22kg of $CO_2$ annually through the natural process of photosynthesis.</p>
+          <p>Trees act as natural vacuum cleaners for $CO_2$. A mature Neem tree can absorb up to 22kg of carbon annually in urban environments.</p>
         </div>
       </article>
 
-      <article class="notebook-paper diag-L push-1">
-        <div class="spiral-rings"></div>
-        <div class="paper-body">
-          <div class="topic-leaf"><i class="fa-solid fa-wind"></i></div>
+      <article class="notebook-card note-L offset-1">
+        <div class="spiral-spine"></div>
+        <div class="card-body">
           <h3>Urban Heat Mitigation</h3>
-          <p>Strategic urban forestry counteracts the "Urban Heat Island" effect, providing cooling through evapotranspiration and shaded surface areas.</p>
+          <p>Strategic planting counteracts the "Urban Heat Island" effect through evapotranspiration and the creation of shaded micro-climates.</p>
         </div>
       </article>
 
-      <article class="notebook-paper diag-R push-2">
-        <div class="spiral-rings"></div>
-        <div class="paper-body">
-          <div class="topic-leaf"><i class="fa-solid fa-chart-line"></i></div>
-          <h3>Net Zero Methodology</h3>
-          <p>The path to carbon neutrality is a hybrid balance: aggressive source reduction via Solar PV combined with biological removal via Urban Forestry.</p>
+      <article class="notebook-card note-R offset-2">
+        <div class="spiral-spine"></div>
+        <div class="card-body">
+          <h3>Mathematical Net Zero</h3>
+          <p>Sustainability is reached by balancing aggressive source reduction (Solar) with atmospheric removal (Urban Forestry).</p>
         </div>
       </article>
     </div>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" style="padding: 40px 0; background: #eee; text-align: center; margin-top: 60px;">
     <div class="container">
       <p>Department of Civil Engineering • NED University of Engineering and Technology • Project by Group (Engr Azhan Ahmed & team)</p>
     </div>
   </footer>
 
-  <style>
-    /* Healthy, Clean Workspace Background */
-    .insights-layout {
-      background-color: #f0f4f2; /* Soft mint-grey */
-      background-image: radial-gradient(#d1dbd5 1.5px, transparent 1.5px);
-      background-size: 35px 35px;
-    }
-
-    .notebook-container { padding: 60px 20px; position: relative; }
-
-    .page-intro {
-      margin-bottom: 50px;
-      text-align: left;
-    }
-
-    .page-intro h2 { color: #1a5e38; font-size: 2.5rem; margin-bottom: 5px; }
-    .page-intro p { color: #666; font-style: italic; }
-
-    /* 3-Column Diagonal Scattering */
-    .notebook-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      align-items: start;
-    }
-
-    /* Modern Paper Shape */
-    .notebook-paper {
-      background: #ffffff;
-      display: flex;
-      min-height: 240px;
-      border-radius: 4px;
-      box-shadow: 12px 12px 30px rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      overflow: hidden;
-    }
-
-    /* Healthy Spiral Effect */
-    .spiral-rings {
-      width: 38px;
-      background: #f9fbf9;
-      border-right: 1px solid #edf2ef;
-      background-image: radial-gradient(#2ecc71 4px, transparent 5px);
-      background-size: 100% 28px;
-      background-position: center;
-    }
-
-    /* Soft Green Icons to match "Healthy" theme */
-    .topic-leaf {
-      color: #2ecc71;
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      opacity: 0.7;
-    }
-
-    .paper-body { padding: 25px; flex: 1; }
-    .paper-body h3 { color: #1a5e38; font-size: 1.25rem; margin-bottom: 10px; }
-    .paper-body p { color: #555; font-size: 0.92rem; line-height: 1.6; }
-
-    /* Diagonal Positions */
-    .diag-L { transform: rotate(-1.2deg); }
-    .diag-R { transform: rotate(1.5deg); }
-    .push-1 { margin-top: 50px; }
-    .push-2 { margin-top: 100px; }
-
-    /* Hover "Healthy" Effect */
-    .notebook-paper:hover {
-      transform: rotate(0deg) translateY(-10px);
-      box-shadow: 0 15px 35px rgba(46, 204, 113, 0.15); /* Greenish soft shadow */
-      border-color: #2ecc71;
-    }
-
-    @media (max-width: 1000px) {
-      .notebook-grid { grid-template-columns: 1fr 1fr; }
-      .push-2 { margin-top: 0; }
-    }
-  </style>
 </body>
 </html>
