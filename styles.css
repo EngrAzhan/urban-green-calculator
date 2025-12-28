@@ -985,24 +985,34 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 }
 
 
-
-
-/* Contact Icon Styling */
+/* Updated Contact Styling to show Text + Icons */
     .member-contacts {
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 10px;
+      flex-direction: column; /* Stacks each contact line vertically */
+      align-items: center;
+      gap: 5px;
+      margin-top: 15px;
     }
 
-    .member-contacts a {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.75rem; /* Small font to keep the row from getting too wide */
       text-decoration: none;
+      transition: all 0.3s ease;
     }
 
-    .member-contacts a:hover {
-      color: #2ecc71;
-      transform: translateY(-2px);
+    .contact-item i {
+      color: #2ecc71; /* Green icons */
+      font-size: 0.85rem;
+      width: 15px;
+      text-align: center;
     }
+
+    .contact-item:hover {
+      color: #2ecc71;
+    }
+
+
