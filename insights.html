@@ -209,6 +209,53 @@
         .notebook-grid { grid-template-columns: 1fr 1fr; }
         .push-2 { margin-top: 0; }
     }
+
+    /* --- MOBILE RESPONSIVE FIXES --- */
+    @media (max-width: 768px) {
+        /* 1. Fix Navigation Pill Overflow */
+        .cool-nav {
+            width: 95% !important;
+            max-width: 400px;
+            margin: 0 auto;
+            gap: 10px !important;
+            padding: 10px 15px !important;
+            justify-content: center;
+        }
+
+        .nav-item span {
+            font-size: 0.65rem !important;
+        }
+
+        .active-circle {
+            width: 35px !important;
+            height: 35px !important;
+            top: -12px !important;
+        }
+
+        /* 2. Fix Notebook Cards (Force 1 Column) */
+        .notebook-grid {
+            grid-template-columns: 1fr !important; /* Stack vertically */
+            gap: 20px !important;
+            padding: 10px !important;
+        }
+
+        .notebook-page {
+            transform: rotate(0deg) !important; /* Remove tilt on mobile */
+            margin-top: 0 !important;          /* Remove desktop offsets */
+            width: 100%;
+        }
+
+        .insights-intro h2 {
+            font-size: 1.8rem;
+        }
+        
+        /* 3. Stack Header Elements */
+        .header-layout {
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+        }
+    }
   </style>
 </body>
 </html>
