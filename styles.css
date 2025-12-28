@@ -903,3 +903,38 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         font-size: 1.8rem;
     }
 }
+
+
+/* Responsive Fix for the Dark Navigation Pill */
+@media (max-width: 600px) {
+    .cool-nav {
+        /* 1. Allow the pill to be narrower */
+        width: 95%; 
+        max-width: 400px;
+        margin: 0 auto;
+        
+        /* 2. Reduce the gap between items so they fit */
+        gap: 10px; 
+        padding: 10px 15px;
+        
+        /* 3. Make sure it doesn't overlap the logo/text above it */
+        position: relative;
+        top: 0; 
+    }
+
+    .nav-item {
+        /* 4. Make the icons and text smaller for mobile */
+        font-size: 0.65rem; 
+    }
+
+    .nav-item i {
+        font-size: 1rem; /* Smaller icons */
+    }
+
+    .active-circle {
+        /* 5. Shrink the green floating circle on mobile */
+        width: 35px;
+        height: 35px;
+        top: -12px;
+    }
+}
