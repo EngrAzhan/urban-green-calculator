@@ -87,13 +87,14 @@
 
             <div class="note-card rotate-R push-down">
                 <div class="spiral-wire"></div>
-                <div class="note-content"><style>
-    /* Background changed from blue to a professional light workspace tone */
+                <div class="note-content">
+<style>
     .notebook-page {
-        background-color: #f8f9fa; /* Light grey/off-white */
-        background-image: radial-gradient(#d1d1d1 1.2px, transparent 1.2px);
-        background-size: 30px 30px; /* Subtle dot-grid pattern */
-        color: #333;
+        background-color: #fcfcfc; /* Very light workspace grey */
+        background-image: 
+            linear-gradient(90deg, rgba(0,0,0,.03) 1px, transparent 1px),
+            linear-gradient(rgba(0,0,0,.03) 1px, transparent 1px);
+        background-size: 20px 20px;
         margin: 0;
         font-family: 'Segoe UI', sans-serif;
     }
@@ -101,73 +102,78 @@
     .notebook-container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 60px 40px;
+        padding: 40px;
     }
 
-    /* Hero text adjusted for the lighter background */
-    .notebook-hero {
-        color: #1a5e38; /* Dark green text */
-        border-left: 8px solid #2ecc71;
-        padding-left: 20px;
-        margin-bottom: 60px;
+    /* Smaller, narrower grid for diagonal flow */
+    .spiral-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for better scattering */
+        gap: 30px;
+        align-items: start;
     }
 
-    /* The Note Card - kept the perfect shape but softened the shadow */
     .note-card {
         background: #ffffff;
         display: flex;
-        min-height: 300px;
-        box-shadow: 8px 8px 25px rgba(0,0,0,0.08); /* Softer shadow for light bg */
-        border-radius: 5px;
-        position: relative;
-        transition: 0.3s ease;
-        border: 1px solid #eee; /* Added a thin border to define the paper edge */
+        flex-direction: row;
+        min-height: 200px; /* Reduced height */
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+        border-radius: 4px;
+        border: 1px solid #efefef;
+        transition: all 0.3s ease;
+        max-width: 400px; /* Limits the size so they stay small */
     }
 
-    /* Spiral Wire - adjusted colors to look better on light bg */
+    /* Spiral remains thin and proportional */
     .spiral-wire {
-        width: 40px;
-        background: #f1f1f1; /* Slightly darker than paper */
+        width: 30px;
+        background: #f8f8f8;
         border-right: 1px solid #ddd;
-        position: relative;
-        background-image: radial-gradient(#666 5px, transparent 6px);
-        background-size: 100% 30px;
+        background-image: radial-gradient(#777 3px, transparent 4px);
+        background-size: 100% 20px;
         background-position: center;
     }
 
     .spiral-wire::before {
         content: "";
         position: absolute;
-        top: 0; left: 10px;
-        width: 25px;
+        top: 0; left: 8px;
+        width: 20px;
         height: 100%;
-        /* Metallic wire look */
-        background-image: linear-gradient(transparent 10px, #999 12px, #444 15px, #999 18px, transparent 20px);
-        background-size: 100% 30px;
-        z-index: 5;
+        background-image: linear-gradient(transparent 5px, #bbb 7px, #444 10px, #bbb 13px, transparent 15px);
+        background-size: 100% 20px;
     }
 
-    /* Formatting the text inside */
-    .note-content { padding: 35px; flex: 1; text-align: left; }
-    .date-stamp { font-weight: bold; color: #2ecc71; font-size: 0.8rem; border-bottom: 2px solid #e9f7ef; display: inline-block; margin-bottom: 10px; }
-    .note-content h3 { color: #1a5e38; margin-top: 5px; font-size: 1.6rem; }
-    .note-content p { color: #555; line-height: 1.7; }
+    .note-content { 
+        padding: 20px; 
+        font-size: 0.9rem; /* Smaller font for smaller cards */
+    }
 
-    /* The Zig-Zag staggered layout you liked */
-    .rotate-L { transform: rotate(-1.5deg); }
-    .rotate-R { transform: rotate(1.8deg); }
-    .push-down { margin-top: 100px; }
+    .note-content h3 { 
+        font-size: 1.1rem; 
+        color: #1a5e38; 
+        margin-bottom: 8px;
+    }
+
+    /* Diagonal Staggering Logic */
+    .item-1 { transform: rotate(-2deg); grid-column: 1; }
+    .item-2 { transform: rotate(3deg); grid-column: 2; margin-top: 50px; }
+    .item-3 { transform: rotate(-1deg); grid-column: 3; margin-top: 100px; }
+    
+    .item-4 { transform: rotate(2deg); grid-column: 1; margin-top: -20px; }
+    .item-5 { transform: rotate(-3deg); grid-column: 2; margin-top: 30px; }
+    .item-6 { transform: rotate(1deg); grid-column: 3; margin-top: 80px; }
 
     .note-card:hover {
-        transform: rotate(0deg) translateY(-10px);
-        box-shadow: 0 15px 35px rgba(46, 204, 113, 0.2);
-        z-index: 10;
+        transform: rotate(0deg) translateY(-5px);
+        box-shadow: 0 10px 25px rgba(46, 204, 113, 0.15);
+        z-index: 100;
     }
 
-    /* Responsive fix */
-    @media (max-width: 1000px) {
-        .spiral-grid { grid-template-columns: 1fr; }
-        .push-down { margin-top: 20px; }
+    @media (max-width: 1100px) {
+        .spiral-grid { grid-template-columns: 1fr 1fr; }
+        .item-3, .item-6 { grid-column: auto; margin-top: 0; }
     }
 </style>
                     <span class="date-stamp">LOG #06</span>
