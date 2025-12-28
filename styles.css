@@ -957,3 +957,29 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         line-height: 1.2;
     }
 }
+
+
+/* Mobile Fix specifically for Notebook Cards */
+@media (max-width: 768px) {
+    /* 1. Force the grid to 1 column so cards are wide enough to read */
+    .notebook-grid {
+        grid-template-columns: 1fr !important; 
+        gap: 20px !important;
+        padding: 10px !important;
+    }
+
+    /* 2. Remove the diagonal tilt on mobile to prevent horizontal scrolling */
+    .notebook-page, .notebook-card, .diag-left, .diag-right, .note-L, .note-R {
+        transform: rotate(0deg) !important;
+        margin-top: 0 !important; /* Removes the 'push' gaps used for desktop */
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* 3. Adjust the heading for smaller screens */
+    .insights-intro h2, .section-heading {
+        font-size: 1.8rem !important;
+        padding-right: 0 !important;
+        display: block !important;
+    }
+}
