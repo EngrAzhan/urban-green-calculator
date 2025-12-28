@@ -698,3 +698,51 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     text-align: center;
   }
 }
+/* Container to keep them side-by-side and uniform */
+.button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* The Base Button Style */
+.spectacular-btn {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 15px 35px;
+    border-radius: 50px; /* Pill shape */
+    color: #ffffff;
+    
+    /* Uniform Glass Look */
+    background: rgba(46, 204, 113, 0.2); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(46, 204, 113, 0.5);
+    
+    /* Animation Timing */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    min-width: 220px; /* Ensures both are the same width */
+}
+
+/* THE SPECTACULAR HOVER REACTION */
+.spectacular-btn:hover {
+    /* Lift the button up */
+    transform: translateY(-8px) scale(1.05);
+    
+    /* Brighten background */
+    background: rgba(46, 204, 113, 0.8);
+    border-color: #2ecc71;
+    
+    /* Add Neon Glow to match the logo */
+    box-shadow: 0 15px 30px rgba(46, 204, 113, 0.4), 
+                0 0 15px rgba(46, 204, 113, 0.6);
+    
+    /* Text pop */
+    letter-spacing: 1px;
+    color: #000; /* Dark text on bright green looks very clean */
+}
