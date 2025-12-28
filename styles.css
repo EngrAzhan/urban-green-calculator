@@ -675,7 +675,7 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 }
 
 .header-logo {
-  height: 80px; /* Adjust size as needed */
+  height: 120px; /* Adjust size as needed */
   width: auto;
   display: block;
   /* Since your logo has a dark green circle, it will look great 
