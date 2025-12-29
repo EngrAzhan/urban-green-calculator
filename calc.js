@@ -11,12 +11,7 @@ function setVisibility(id){['step1','step2','step3','final-impact'].forEach(x=>d
 function calculate(){
   const P = Number(document.getElementById('genPower').value)||0;
   const H = Number(document.getElementById('hours').value)||0;
-  // LOGIC: If the user hasn't touched the fuel efficiency, 
-  // we calculate a realistic estimate (approx 0.22L per kW at 75% load)
-  let defaultEfficiency = P * 0.22; 
-  if (P === 10) defaultEfficiency = 2.2; // Keep your specific Karachi default for 10kW
-  
-  const fuelInput = document.getElementById('fuelEff');
+  const F = Number(document.getElementById('fuelEff').value) || (P * 0.22);
   const F = Number(fuelInput.value) || defaultEfficiency;
   const price = Number(document.getElementById('dieselPrice').value)||265.65;
   const EF = Number(document.getElementById('co2Factor').value)||2.68;
@@ -93,6 +88,7 @@ function animateValue(id, start, end, duration) {
     }
     requestAnimationFrame(run);
 }
+
 
 
 
