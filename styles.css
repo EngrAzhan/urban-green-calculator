@@ -1138,3 +1138,33 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     @media (max-width: 650px) {
       .benefit-grid { flex-direction: column; }
     }
+
+
+.result-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* This pushes the label to the left and creates space */
+.result-row span:first-child {
+    flex: 1; 
+    text-align: left;
+}
+
+/* This ensures the number value stays in a fixed-width column */
+.result-row strong {
+    width: 120px;      /* Adjust this width to fit your largest number */
+    text-align: right; /* Aligns numbers to the right */
+    display: inline-block;
+    font-family: monospace; /* Monospace keeps digits aligned vertically */
+}
+
+/* This ensures the units (L, kg, etc.) also align in their own column */
+.result-row span:last-child {
+    width: 50px;       /* Fixed width for units */
+    text-align: left;
+    margin-left: 10px;
+    color: #666;
+}
