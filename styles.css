@@ -1295,3 +1295,40 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 .impact-stats-card {
     margin: 10px auto; /* Brings the tree count closer to the logo */
 }
+
+
+
+
+.sust-logo-img {
+    max-width: 450px !important; /* Increased from 280px */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.impact-tree-img {
+    width: 250px !important; /* Increased from 150px */
+    height: auto;
+    object-fit: contain;
+}
+
+.city-landscape-img {
+    max-width: 1000px !important; /* Increased from 700px */
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+.impact-stats-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px; /* More space between the big tree and the text */
+    padding: 50px; /* More internal padding */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#tree-count-hero {
+    font-size: 6rem; /* Makes the 0 or the number much bigger to match the big tree */
+    line-height: 1;
+}
