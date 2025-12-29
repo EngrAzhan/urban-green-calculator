@@ -1272,3 +1272,26 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 #remainingCO2 { color: #d32f2f; } /* Residual CO2 in Red */
 #annualCO2 { color: #059669; }    /* Saved CO2 in Green */
 #profit10 { color: #1e40af; }      /* Profit in Blue */
+
+
+
+
+/* Fix for the excessive white space at the bottom */
+#final-impact {
+    padding: 20px 0 !important; /* Reduced from 100px */
+    min-height: auto !important; /* Removes the 80vh constraint */
+}
+
+.impact-hero {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.sust-logo-img {
+    max-width: 180px; /* Smaller logo saves vertical space */
+    margin-bottom: 15px;
+}
+
+.impact-stats-card {
+    margin: 10px auto; /* Brings the tree count closer to the logo */
+}
