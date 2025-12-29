@@ -7,52 +7,34 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body class="theme-green">
   <header class="site-header">
-  <div class="container header-layout">
-
-    <div class="logo-box">
-      <img src="logo.png" alt="CO2 Logo" class="header-logo">
-    </div>
-    
-    <div class="brand-title">
-      <h1>Sustainable Energy & Urban Green Mitigation</h1>
+    <div class="container header-layout">
+      <div class="logo-box">
+        <img src="logo.png" alt="CO2 Logo" class="header-logo">
+      </div>
+      
+      <div class="brand-title">
+        <h1>Sustainable Energy & Urban Green Mitigation</h1>
         <p>Developed by Engr. Azhan Ahmed</p>
       </div>
 
       <nav class="cool-nav">
-        <a href="index.html" class="nav-item">
-          <i class="fa-solid fa-house"></i>
-          <span>Home</span>
-        </a>
+        <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
         <a href="calculator.html" class="nav-item active">
-          <div class="active-circle">
-            <i class="fa-solid fa-calculator"></i>
-          </div>
-          <span>Calculator</span>
+          <div class="active-circle"><i class="fa-solid fa-calculator"></i></div><span>Calculator</span>
         </a>
-        <a href="theory.html" class="nav-item">
-          <i class="fa-solid fa-book"></i>
-          <span>Theory</span>
-        </a>
-         <a href="insights.html" class="nav-item">
-           <i class="fa-solid fa-lightbulb"></i>
-           <span>Insights</span>
-        </a>  
-        <a href="trees.html" class="nav-item">
-          <i class="fa-solid fa-tree"></i>
-          <span>Trees</span>
-        </a>
-        <a href="about.html" class="nav-item">
-          <i class="fa-solid fa-user"></i>
-          <span>About</span>
-        </a>
+        <a href="theory.html" class="nav-item"><i class="fa-solid fa-book"></i><span>Theory</span></a>
+        <a href="insights.html" class="nav-item"><i class="fa-solid fa-lightbulb"></i><span>Insights</span></a>
+        <a href="trees.html" class="nav-item"><i class="fa-solid fa-tree"></i><span>Trees</span></a>
+        <a href="about.html" class="nav-item"><i class="fa-solid fa-user"></i><span>About</span></a>
       </nav>
     </div>
   </header>
-
 
   <main>
     <section class="container">
@@ -96,9 +78,8 @@
       </div>
 
       <div class="step" id="step3" style="display:none;">
-    <h3>Step 3 — Results</h3>
-
-    <div class="results">
+        <h3>Step 3 — Results</h3>
+        <div class="results">
           <div class="result-row"><span>Fuel per Day:</span><strong id="fuelDay">0.00</strong><span>L</span></div>
           <div class="result-row"><span>CO₂ per Day:</span><strong id="co2Day">0.00</strong><span>kg</span></div>
           <div class="result-row"><span>Total Annual CO₂:</span><strong id="totalCO2Year">0.00</strong><span>kg</span></div>
@@ -110,53 +91,45 @@
           <div class="result-row" style="color: #d32f2f;"><span>Residual CO₂:</span><strong id="remainingCO2">0.00</strong><span>kg</span></div>
           <div class="result-row"><span>Payback Period:</span><strong id="payback">0.00</strong><span>Years</span></div>
           <div class="result-row" style="font-weight: bold;"><span>10-Year Net Profit:</span><strong id="profit10">0.00</strong><span>PKR</span></div>
-    </div>
-
-    <div class="actions">
-      <button onclick="goToStep2()">← Back</button>
-      <button onclick="calculate()">Calculate</button>
-      <button id="pdfBtn" onclick="downloadPDF()" style="display:none; background-color: #1e40af; color: white;">
-        <i class="fa-solid fa-file-pdf"></i> Download Report
-      </button>
-      <button class="reset-btn" onclick="location.reload()" style="display:none;" id="resetBtn">New Calculation</button>
-    </div>
-
-    <div id="final-impact" style="display:none; margin-top: 30px; border-top: 2px dashed #e0e7ff; padding-top: 20px;">
-        <div class="impact-hero">
-            <img src="sust-logo.png" class="sust-logo-img" alt="Sustainability">
-
-            <div class="impact-stats-card">
-                <img src="impact-tree.png" class="impact-tree-img" alt="Tree">
-                <div class="impact-info">
-                    <p>Trees required to reach Net Zero"</p>
-                    <h2 id="tree-count-hero">0</h2>
-                    <p>Trees Every Year!</p>
-                </div>
-            </div>
-
-            <div class="landscape-box">
-                <img src="city-landscape.png" class="city-landscape-img" alt="Green City">
-            </div>
         </div>
-    </div>
-        
-    <p class="notes">Tip: use the Karachi default values in the About page as references for your report.</p>
-</div>
 
+        <div class="actions">
+          <button onclick="goToStep2()">← Back</button>
+          <button onclick="calculate()">Calculate</button>
+          <button id="pdfBtn" onclick="downloadPDF()" style="display:none; background-color: #1e40af; color: white;">
+            <i class="fa-solid fa-file-pdf"></i> Download PDF
+          </button>
+          <button class="reset-btn" onclick="location.reload()" style="display:none;" id="resetBtn">New Calculation</button>
+        </div>
 
+        <div id="final-impact" style="display:none; margin-top: 30px; border-top: 2px dashed #e0e7ff; padding-top: 20px;">
+          <div class="impact-hero">
+            <img src="sust-logo.png" class="sust-logo-img" alt="Sustainability">
+            <div class="impact-stats-card">
+              <img src="impact-tree.png" class="impact-tree-img" alt="Tree">
+              <div class="impact-info">
+                <p>Trees required to reach Net Zero</p>
+                <h2 id="tree-count-hero">0</h2>
+                <p>Trees Every Year!</p>
+              </div>
+            </div>
+            <div class="landscape-box">
+              <img src="city-landscape.png" class="city-landscape-img" alt="Green City">
+            </div>
+          </div>
+        </div>
+        <p class="notes">Tip: use the Karachi default values in the About page as references for your report.</p>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">Department of Civil Engineering • NED University of Engineering and Technology • Project by Group (Engr Azhan Ahmed & team)</div>
+    <div class="container">Department of Civil Engineering • NED University of Engineering and Technology</div>
   </footer>
 
-  <script src="common.js"></script>
   <script src="calc.js"></script>
 </body>
-
 </html>
-      
-        
 
 
 
