@@ -1436,3 +1436,92 @@ button[onclick*="goToStep"]:hover {
     box-sizing: border-box;  /* Prevents borders from adding extra height */
     margin: 0;               /* Removes any default browser margins */
 }
+
+
+
+/* 1. Deep Engineering Background */
+.insights-workspace {
+    padding: 80px 0;
+    background-color: #ffffff;
+    /* Sophisticated Blueprint Grid */
+    background-image: 
+        linear-gradient(rgba(5, 150, 105, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(5, 150, 105, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* 2. Impactful Header Section */
+.insights-intro {
+    margin-bottom: 80px;
+    border-left: 8px solid #059669; /* NED Green */
+    padding-left: 30px;
+}
+
+.insights-intro h2 { 
+    color: #111827; /* Deep Black */
+    font-size: 3rem; 
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+/* 3. The Premium Grid */
+.notebook-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* 4. Glass-Engineering Cards */
+.notebook-page {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Charisma: Lift + Glow */
+.notebook-page:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: #10b981;
+    box-shadow: 0 20px 25px -5px rgba(5, 150, 105, 0.2);
+}
+
+/* Vertical Theme Accent */
+.spiral-binding {
+    width: 6px;
+    background: #059669; /* Solid Green Strip */
+    border: none;
+}
+
+.page-inner { padding: 40px; }
+
+/* 5. Typography with Charisma */
+.health-icon { 
+    color: #059669; 
+    font-size: 2rem; 
+    margin-bottom: 20px;
+    background: #f0fdf4;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.page-inner h3 { 
+    color: #111827; /* Premium Black */
+    font-size: 1.5rem; 
+    font-weight: 700;
+    margin-bottom: 15px; 
+}
+
+.page-inner p { 
+    color: #4b5563; 
+    font-size: 1rem; 
+    line-height: 1.6; 
+}
