@@ -93,6 +93,28 @@ function animateValue(id, start, end, duration) {
     requestAnimationFrame(run);
 }
 
+// Add this to the end of calc.js to make the calculation LIVE
+document.addEventListener("DOMContentLoaded", function() {
+    const hoursInput = document.getElementById('hours');
+    const litersInput = document.getElementById('dailyLiters');
+    const efficiencyDisplay = document.getElementById('calcEfficiency');
+
+    function updateLiveEfficiency() {
+        const H = Number(hoursInput.value) || 0;
+        const L = Number(litersInput.value) || 0;
+        
+        if (H > 0 && L > 0) {
+            const efficiency = L / H;
+            efficiencyDisplay.value = efficiency.toFixed(2);
+        } else {
+            efficiencyDisplay.value = "";
+        }
+    }
+
+    // Listen for typing in both boxes
+    hoursInput.addEventListener('input', updateLiveEfficiency);
+    litersInput.addEventListener('input', updateLiveEfficiency);
+});
 
 
 
