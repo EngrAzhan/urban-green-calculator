@@ -89,6 +89,31 @@ function animateValue(id, start, end, duration) {
     requestAnimationFrame(run);
 }
 
+/* ... existing animateValue function ... */
+
+// --- ADD THIS AT THE VERY END ---
+document.addEventListener("DOMContentLoaded", function() {
+    const genPowerInput = document.getElementById('genPower');
+    
+    if (genPowerInput) {
+        genPowerInput.addEventListener('input', function() {
+            const power = Number(this.value) || 0;
+            const fuelInput = document.getElementById('fuelEff');
+            
+            if (power > 0) {
+                // Engineering Formula: ~0.22L per kW at 75% Load Factor
+                let estimatedEfficiency = power * 0.22;
+                
+                // Match your specific 10kW Karachi default
+                if (power === 10) estimatedEfficiency = 2.2;
+                
+                fuelInput.value = estimatedEfficiency.toFixed(2);
+            } else {
+                fuelInput.value = "";
+            }
+        });
+    }
+});
 
 
 
