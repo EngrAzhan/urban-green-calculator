@@ -1356,3 +1356,67 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     height: 45px;       /* Keeps all buttons the same height */
     cursor: pointer;
 }
+
+
+
+/* Container for perfect alignment */
+.actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* Base button style */
+.actions button {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 26px;
+    border-radius: 8px; /* Professional slightly rounded corners */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Primary Action: Calculate (Bold Green) */
+button[onclick="calculate()"] {
+    background-color: #059669; /* Darker Green */
+    color: #ffffff;
+    box-shadow: 0 4px 0px #047857; /* Deep green 3D effect */
+}
+
+button[onclick="calculate()"]:hover {
+    background-color: #047857;
+    transform: translateY(2px);
+    box-shadow: 0 2px 0px #047857;
+}
+
+/* Secondary Action: New Calculation (Clean Emerald) */
+#resetBtn {
+    background-color: #10b981; /* Lighter Emerald Green */
+    color: white;
+    box-shadow: 0 4px 0px #059669;
+}
+
+#resetBtn:hover {
+    background-color: #059669;
+    transform: translateY(2px);
+    box-shadow: 0 2px 0px #059669;
+}
+
+/* Back Button (Neutral Gray/Green) */
+button[onclick*="goToStep"] {
+    background-color: #f0fdf4; /* Very pale green tint */
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+button[onclick*="goToStep"]:hover {
+    background-color: #d1fae5;
+}
