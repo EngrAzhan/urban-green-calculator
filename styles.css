@@ -1343,65 +1343,66 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 }
 
 
-/* Container for perfect button alignment */
+/* Container: Centered and compact */
 .actions {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
-    padding: 20px;
+    margin-top: 25px;
     flex-wrap: wrap;
 }
 
-/* The Premium Button Base */
+/* Refined Premium Small Button Base */
 .actions button {
     font-family: 'Inter', 'Segoe UI', sans-serif;
-    font-size: 14px;
+    font-size: 12px; /* Smaller font */
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
-    padding: 16px 32px;
-    border-radius: 4px; /* Sharp, professional engineering look */
+    letter-spacing: 1px;
+    padding: 10px 20px; /* Reduced padding for smaller size */
+    border-radius: 4px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 8px;
     border: 2px solid transparent;
+    min-width: 120px; /* Ensures consistent width */
 }
 
-/* Primary: CALCULATE (Green & White) */
+/* Primary Action: CALCULATE */
 button[onclick="calculate()"] {
     background-color: #059669;
     color: white;
-    box-shadow: 0 10px 20px -10px rgba(5, 150, 105, 0.5);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
 }
 
 button[onclick="calculate()"]:hover {
     background-color: #047857;
-    transform: translateY(-3px);
-    box-shadow: 0 15px 25px -10px rgba(5, 150, 105, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(5, 150, 105, 0.3);
 }
 
-/* Secondary: NEW CALCULATION (Black & Green) */
+/* New Calculation: BLACK & GREEN */
 #resetBtn {
-    background-color: #111827; /* Rich Black */
-    color: #10b981; /* Emerald Green Text */
-    border: 2px solid #059669;
+    background-color: #111827; /* Deep Black */
+    color: #10b981; /* Emerald Text */
+    border: 1px solid #059669;
 }
 
 #resetBtn:hover {
     background-color: #059669;
     color: white;
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
-/* Back Button (Minimalist White & Black) */
+/* Back Button: WHITE & BLACK */
 button[onclick*="goToStep"] {
-    background-color: white;
+    background-color: #ffffff;
     color: #111827;
-    border: 2px solid #e5e7eb;
+    border: 1px solid #e5e7eb;
 }
 
 button[onclick*="goToStep"]:hover {
@@ -1409,8 +1410,7 @@ button[onclick*="goToStep"]:hover {
     background-color: #f9fafb;
 }
 
-/* Active Press Effect for all */
+/* Pressed state */
 .actions button:active {
     transform: translateY(0);
-    box-shadow: none;
 }
