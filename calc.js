@@ -11,8 +11,8 @@ function setVisibility(id){['step1','step2','step3','final-impact'].forEach(x=>d
 function calculate(){
   const P = Number(document.getElementById('genPower').value)||0;
   const H = Number(document.getElementById('hours').value)||0;
-  const F = Number(document.getElementById('fuelEff').value) || (P * 0.22);
-  const F = Number(fuelInput.value) || defaultEfficiency;
+  const fuelInput = document.getElementById('fuelEff');
+  const F = Number(fuelInput.value) || (P * 0.22);
   const price = Number(document.getElementById('dieselPrice').value)||265.65;
   const EF = Number(document.getElementById('co2Factor').value)||2.68;
   const S = Number(document.getElementById('solarCap').value)||0;
@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
 
 
 
