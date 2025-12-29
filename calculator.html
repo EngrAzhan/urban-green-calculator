@@ -1,150 +1,151 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculator - Sustainable Energy and Urban Green Mitigation</title>
+// Navigation logic
+function goToStep1(){setVisibility('step1')}
+function goToStep2(){setVisibility('step2')}
+function goToStep3(){
+  setVisibility('step3'); 
+  calculate();          
+}
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+function setVisibility(id){
+  ['step1','step2','step3'].forEach(x => {
+    const el = document.getElementById(x);
+    if(el) el.style.display = (x === id ? 'block' : 'none');
+  });
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-</head>
+  if(id === 'step1' || id === 'step2') {
+      const impact = document.getElementById('final-impact');
+      if(impact) impact.style.display = 'none';
+  }
+}
 
-<body class="theme-green">
-  <header class="site-header">
-    <div class="container header-layout">
-      <div class="logo-box">
-        <img src="logo.png" alt="CO2 Logo" class="header-logo">
-      </div>
-      
-      <div class="brand-title">
-        <h1>Sustainable Energy & Urban Green Mitigation</h1>
-        <p>Developed by Engr. Azhan Ahmed</p>
-      </div>
+function calculate() {
+    const P = Number(document.getElementById('genPower').value) || 0;
+    const H = Number(document.getElementById('hours').value) || 0;
+    const dailyLiters = Number(document.getElementById('dailyLiters').value) || 0;
+    const S = Number(document.getElementById('solarCap').value) || 0;
+    const sun = Number(document.getElementById('sunHours').value) || 5.5;
+    const install = Number(document.getElementById('installCost').value) || 0;
+    const maint = Number(document.getElementById('maintCost').value) || 0;
 
-      <nav class="cool-nav">
-        <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
-        <a href="calculator.html" class="nav-item active">
-          <div class="active-circle"><i class="fa-solid fa-calculator"></i></div><span>Calculator</span>
-        </a>
-        <a href="theory.html" class="nav-item"><i class="fa-solid fa-book"></i><span>Theory</span></a>
-        <a href="insights.html" class="nav-item"><i class="fa-solid fa-lightbulb"></i><span>Insights</span></a>
-        <a href="trees.html" class="nav-item"><i class="fa-solid fa-tree"></i><span>Trees</span></a>
-        <a href="about.html" class="nav-item"><i class="fa-solid fa-user"></i><span>About</span></a>
-      </nav>
-    </div>
-  </header>
+    const price = 265.65; 
+    const EF = 2.68;      
 
-  <main>
-    <section class="container">
-      <h2>Carbon Calculator (3-step)</h2>
-      <p>Follow the steps to input diesel and solar parameters. Use Karachi-defaults provided.</p>
+    const fuelDay = dailyLiters; 
+    const co2Day = fuelDay * EF; 
+    const totalAnnualCO2 = co2Day * 365; 
+    const costDay = fuelDay * price; 
+    const annualDieselExpense = costDay * 365; 
 
-      <div class="step" id="step1">
-        <h3>Step 1 — Diesel generator</h3>
-        <label>Generator Power (kW) <input id="genPower" type="number" value="0"></label>
-        <label>Operating Hours/day <input id="hours" type="number" value="0"></label>
-        <label>Total Diesel Consumed per Day (Liters) <input id="dailyLiters" type="number" placeholder="e.g. 15" step="0.1"></label>
-        <label>Calculated Efficiency (L/hour) <input id="calcEfficiency" type="number" readonly style="background: white; cursor: default;"></label>
-        <label>Diesel Price (PKR/L) <input id="dieselPrice" type="number" value="265.65"></label>
-        <label>CO₂ Factor (kg/L) <input id="co2Factor" type="number" value="2.68" step="0.01"></label>
+    const dieselEnergy = P * H; 
+    const solarEnergy = S * sun; 
 
-        <div class="generator-container">
-          <img src="smoke.png" class="smoke back-smoke" alt="smoke">
-          <img src="generator.png" class="generator-img" alt="Diesel Generator">
-          <img src="smoke.png" class="smoke front-smoke" alt="smoke">
+    const replacedFraction = dieselEnergy > 0 ? Math.min(solarEnergy / dieselEnergy, 1) : 0;
+    const annualCO2saved = totalAnnualCO2 * replacedFraction; 
+    const residualCO2 = totalAnnualCO2 - annualCO2saved; 
+
+    const annualSavings = (annualDieselExpense * replacedFraction) - maint;
+    const payback = annualSavings > 0 ? (install / annualSavings) : 0; 
+    const profit10 = (annualSavings * 10) - install; 
+
+    // Animate Results
+    animateValue("fuelDay", 0, fuelDay, 1000);
+    animateValue("co2Day", 0, co2Day, 1000);
+    animateValue("totalCO2Year", 0, totalAnnualCO2, 1000);
+    animateValue("costDay", 0, costDay, 1000);
+    animateValue("costYear", 0, annualDieselExpense, 1000);
+    animateValue("dieselEnergy", 0, dieselEnergy, 1000);
+    animateValue("solarEnergy", 0, solarEnergy, 1000);
+    animateValue("annualCO2", 0, annualCO2saved, 1000);
+    animateValue("remainingCO2", 0, residualCO2, 1000);
+    animateValue("payback", 0, payback, 1000);
+    animateValue("profit10", 0, profit10, 1000);
+
+    const treesNeeded = Math.ceil(residualCO2 / 22);
+    document.getElementById('tree-count-hero').innerText = treesNeeded.toLocaleString();
+
+    // Show Impact, PDF button, and Reset button after a delay
+    setTimeout(() => {
+        document.getElementById('final-impact').style.display = 'block';
+        document.getElementById('pdfBtn').style.display = 'inline-block';
+        document.getElementById('resetBtn').style.display = 'inline-block';
+    }, 1500);
+}
+
+function animateValue(id, start, end, duration) {
+    let obj = document.getElementById(id);
+    if (!obj) return;
+    let range = end - start;
+    let startTime = new Date().getTime();
+    let endTime = startTime + duration;
+
+    function run() {
+        let now = new Date().getTime();
+        let remaining = Math.max((endTime - now) / duration, 0);
+        let value = end - (remaining * range);
+        obj.innerHTML = value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        if (now < endTime) requestAnimationFrame(run);
+        else obj.innerHTML = end.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+    requestAnimationFrame(run);
+}
+
+// Live Efficiency Update logic
+document.addEventListener("DOMContentLoaded", function() {
+    const hoursInput = document.getElementById('hours');
+    const litersInput = document.getElementById('dailyLiters');
+    const efficiencyDisplay = document.getElementById('calcEfficiency');
+
+    function updateLiveEfficiency() {
+        const H = Number(hoursInput.value) || 0;
+        const L = Number(litersInput.value) || 0;
+        efficiencyDisplay.value = (H > 0 && L > 0) ? (L / H).toFixed(2) : "";
+    }
+    if(hoursInput && litersInput) {
+        hoursInput.addEventListener('input', updateLiveEfficiency);
+        litersInput.addEventListener('input', updateLiveEfficiency);
+    }
+});
+
+// PDF Generation Logic
+function downloadPDF() {
+    const resultsContent = document.getElementById('step3'); 
+    const impactContent = document.getElementById('final-impact');
+    const now = new Date();
+    const dateTime = now.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
+
+    const reportContainer = document.createElement('div');
+    reportContainer.style.padding = "30px";
+    reportContainer.style.fontFamily = "Arial, sans-serif";
+    
+    reportContainer.innerHTML = `
+        <div style="text-align: center; border-bottom: 2px solid #059669; padding-bottom: 15px; margin-bottom: 30px;">
+            <h1 style="color: #059669; margin: 0;">Sustainability Impact Report</h1>
+            <p style="margin: 5px 0; font-weight: bold;">NED University of Engineering & Technology</p>
+            <p style="font-size: 0.85rem; color: #666;">Generated on: ${dateTime}</p>
         </div>
-        <div class="actions"><button onclick="goToStep2()">Next →</button></div>
-      </div>
-
-      <div class="step" id="step2" style="display:none;">
-        <h3>Step 2 — Solar system</h3>
-        <label>Solar capacity (kW) <input id="solarCap" type="number" value="0"></label>
-        <label>Average sun hours/day <input id="sunHours" type="number" value="0" step="0.1"></label>
-        <label>Installation cost (PKR) <input id="installCost" type="number" value="0"></label>
-        <label>Annual maintenance (PKR) <input id="maintCost" type="number" value="0"></label>
-
-        <div class="solar-container">
-            <img src="rays.png" class="sun-rays" alt="rays">
-            <img src="sun.png" class="sun-img" alt="sun">
-            <img src="solar-panel.png" class="solar-panel-img" alt="Solar Panel">
+        <div style="margin-bottom: 40px;">
+            <h3 style="color: #1e40af; border-bottom: 1px solid #eee; padding-bottom: 5px;">1. Calculation Summary</h3>
+            ${resultsContent.querySelector('.results').innerHTML}
         </div>
-
-        <div class="actions">
-          <button onclick="goToStep1()">← Back</button>
-          <button onclick="goToStep3()">Next →</button>
+        <div style="margin-bottom: 40px;">
+            <h3 style="color: #1e40af; border-bottom: 1px solid #eee; padding-bottom: 5px;">2. Environmental Mitigation</h3>
+            ${impactContent.innerHTML}
         </div>
-      </div>
+        <footer style="margin-top: 60px; text-align: center; font-size: 0.75rem; color: #888; border-top: 1px solid #eee; padding-top: 15px;">
+            Developed by: Engr. Azhan Ahmed & Team | Department of Civil Engineering.
+        </footer>
+    `;
 
-      <div class="step" id="step3" style="display:none;">
-        <h3>Step 3 — Results</h3>
-        <div class="results">
-          <div class="result-row"><span>Fuel per Day:</span><strong id="fuelDay">0.00</strong><span>L</span></div>
-          <div class="result-row"><span>CO₂ per Day:</span><strong id="co2Day">0.00</strong><span>kg</span></div>
-          <div class="result-row"><span>Total Annual CO₂:</span><strong id="totalCO2Year">0.00</strong><span>kg</span></div>
-          <div class="result-row"><span>Diesel Cost per Day:</span><strong id="costDay">0.00</strong><span>PKR</span></div>
-          <div class="result-row"><span>Annual Diesel Expense:</span><strong id="costYear">0.00</strong><span>PKR</span></div>
-          <div class="result-row"><span>Diesel Energy per Day:</span><strong id="dieselEnergy">0.00</strong><span>kWh</span></div>
-          <div class="result-row"><span>Solar Energy per Day:</span><strong id="solarEnergy">0.00</strong><span>kWh</span></div>
-          <div class="result-row" style="color: #059669;"><span>Annual CO₂ Saved:</span><strong id="annualCO2">0.00</strong><span>kg</span></div>
-          <div class="result-row" style="color: #d32f2f;"><span>Residual CO₂:</span><strong id="remainingCO2">0.00</strong><span>kg</span></div>
-          <div class="result-row"><span>Payback Period:</span><strong id="payback">0.00</strong><span>Years</span></div>
-          <div class="result-row" style="font-weight: bold;"><span>10-Year Net Profit:</span><strong id="profit10">0.00</strong><span>PKR</span></div>
-        </div>
+    const opt = {
+        margin: 10,
+        filename: `Sustainability_Report_${now.toLocaleDateString()}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
 
-        <div class="actions">
-          <button onclick="goToStep2()">← Back</button>
-          <button onclick="calculate()">Calculate</button>
-          <button id="pdfBtn" onclick="downloadPDF()" style="display:none; background-color: #1e40af; color: white;">
-            <i class="fa-solid fa-file-pdf"></i> Download PDF
-          </button>
-          <button class="reset-btn" onclick="location.reload()" style="display:none;" id="resetBtn">New Calculation</button>
-        </div>
-
-        <div id="final-impact" style="display:none; margin-top: 30px; border-top: 2px dashed #e0e7ff; padding-top: 20px;">
-          <div class="impact-hero">
-            <img src="sust-logo.png" class="sust-logo-img" alt="Sustainability">
-            <div class="impact-stats-card">
-              <img src="impact-tree.png" class="impact-tree-img" alt="Tree">
-              <div class="impact-info">
-                <p>Trees required to reach Net Zero</p>
-                <h2 id="tree-count-hero">0</h2>
-                <p>Trees Every Year!</p>
-              </div>
-            </div>
-            <div class="landscape-box">
-              <img src="city-landscape.png" class="city-landscape-img" alt="Green City">
-            </div>
-          </div>
-        </div>
-        <p class="notes">Tip: use the Karachi default values in the About page as references for your report.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">Department of Civil Engineering • NED University of Engineering and Technology</div>
-  </footer>
-
-  <script src="calc.js"></script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    html2pdf().set(opt).from(reportContainer).save();
+}
 
 
 
