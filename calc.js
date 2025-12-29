@@ -12,7 +12,7 @@ function calculate(){
   const P = Number(document.getElementById('genPower').value)||0;
   const H = Number(document.getElementById('hours').value)||0;
   const F = Number(document.getElementById('fuelEff').value)||0;
-  const price = Number(document.getElementById('dieselPrice').value)||285;
+  const price = Number(document.getElementById('dieselPrice').value)||265.65;
   const EF = Number(document.getElementById('co2Factor').value)||2.68;
   const S = Number(document.getElementById('solarCap').value)||0;
   const sun = Number(document.getElementById('sunHours').value)||5.5;
@@ -87,6 +87,7 @@ function animateValue(id, start, end, duration) {
     }
     requestAnimationFrame(run);
 }
+
 
 
 
