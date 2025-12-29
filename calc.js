@@ -106,46 +106,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// PDF Generation Logic
-function downloadPDF() {
-    const resultsContent = document.getElementById('step3'); 
-    const impactContent = document.getElementById('final-impact');
-    const now = new Date();
-    const dateTime = now.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
 
-    const reportContainer = document.createElement('div');
-    reportContainer.style.padding = "30px";
-    reportContainer.style.fontFamily = "Arial, sans-serif";
-    
-    reportContainer.innerHTML = `
-        <div style="text-align: center; border-bottom: 2px solid #059669; padding-bottom: 15px; margin-bottom: 30px;">
-            <h1 style="color: #059669; margin: 0;">Sustainability Impact Report</h1>
-            <p style="margin: 5px 0; font-weight: bold;">NED University of Engineering & Technology</p>
-            <p style="font-size: 0.85rem; color: #666;">Generated on: ${dateTime}</p>
-        </div>
-        <div style="margin-bottom: 40px;">
-            <h3 style="color: #1e40af; border-bottom: 1px solid #eee; padding-bottom: 5px;">1. Calculation Summary</h3>
-            ${resultsContent.querySelector('.results').innerHTML}
-        </div>
-        <div style="margin-bottom: 40px;">
-            <h3 style="color: #1e40af; border-bottom: 1px solid #eee; padding-bottom: 5px;">2. Environmental Mitigation</h3>
-            ${impactContent.innerHTML}
-        </div>
-        <footer style="margin-top: 60px; text-align: center; font-size: 0.75rem; color: #888; border-top: 1px solid #eee; padding-top: 15px;">
-            Developed by: Engr. Azhan Ahmed & Team | Department of Civil Engineering.
-        </footer>
-    `;
 
-    const opt = {
-        margin: 10,
-        filename: `Sustainability_Report_${now.toLocaleDateString()}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
-
-    html2pdf().set(opt).from(reportContainer).save();
-}
 
 
 
