@@ -1359,50 +1359,45 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 
 
 
+/* Container */
 .actions {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     justify-content: center;
-    align-items: center;
-    margin-top: 35px;
 }
 
+/* The Button Base */
 .actions button {
-    font-family: 'Inter', sans-serif;
-    padding: 14px 30px;
-    border-radius: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    padding: 15px 35px;
+    border-radius: 50px; /* Pill Shape */
+    font-size: 16px;
+    font-weight: 600;
     border: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Main Calculate Button */
-button[onclick="calculate()"] {
-    background: #059669;
+/* Green Gradient Button */
+button[onclick="calculate()"], #resetBtn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
-    box-shadow: 0 8px 20px -6px rgba(5, 150, 105, 0.6);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
 }
 
-button[onclick="calculate()"]:hover {
-    background: #047857;
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px -6px rgba(5, 150, 105, 0.7);
+button[onclick="calculate()"]:hover, #resetBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
 }
 
-/* Reset Button */
-#resetBtn {
-    background: white;
+/* Back Button - Outlined Style */
+button[onclick*="goToStep"] {
+    background: transparent;
     color: #059669;
     border: 2px solid #059669;
 }
 
-#resetBtn:hover {
-    background: #ecfdf5;
-    transform: translateY(-4px);
+button[onclick*="goToStep"]:hover {
+    background: rgba(5, 150, 105, 0.05);
 }
