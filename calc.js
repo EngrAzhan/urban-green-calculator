@@ -63,10 +63,9 @@ function calculate() {
     const treesNeeded = Math.ceil(residualCO2 / 22);
     document.getElementById('tree-count-hero').innerText = treesNeeded.toLocaleString();
 
-    // Show Impact, PDF button, and Reset button after a delay
+    // Show Impact and Reset button after a delay
     setTimeout(() => {
         document.getElementById('final-impact').style.display = 'block';
-        document.getElementById('pdfBtn').style.display = 'inline-block';
         document.getElementById('resetBtn').style.display = 'inline-block';
     }, 1500);
 }
@@ -105,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function() {
         litersInput.addEventListener('input', updateLiveEfficiency);
     }
 });
-
 
 
 
