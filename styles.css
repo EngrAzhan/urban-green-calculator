@@ -1592,3 +1592,45 @@ button[onclick*="goToStep"]:hover {
 
 .card-body h3 { color: #111827; margin-bottom: 15px; font-size: 1.3rem; }
 .card-body p { color: #4b5563; font-size: 0.95rem; line-height: 1.6; }
+
+
+
+
+
+/* 1. Make the main container fluid */
+.container {
+    width: 95%;            /* Leaves a tiny breathable gap on edges */
+    max-width: 1800px;     /* Allows it to expand significantly on large monitors */
+    margin: 0 auto;
+}
+
+/* 2. Make the Hero Section fill the workspace */
+.big-picture-hero {
+    width: 100%;           /* Pulls the dark box to the edges of the container */
+    box-sizing: border-box; 
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* 3. Adjust the Grid to use the new space */
+.insight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Keeps 3 columns but they will be wider */
+    gap: 30px;
+    width: 100%;
+}
+
+/* 4. Ensure images stretch to fill their new wider boxes */
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+@media (min-width: 1600px) {
+    .insight-grid {
+        grid-template-columns: repeat(4, 1fr); /* Adds a 4th column on very big screens */
+    }
+}
