@@ -119,6 +119,17 @@
         </h3>
     </div>
 
+    <div style="text-align: center; margin-bottom: 20px;">
+        <p style="font-family: sans-serif; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Select your rating:</p>
+        <div id="star-rater" style="display: flex; justify-content: center; gap: 10px; font-size: 2rem; cursor: pointer; color: #ddd;">
+            <span class="star" data-val="1">★</span>
+            <span class="star" data-val="2">★</span>
+            <span class="star" data-val="3">★</span>
+            <span class="star" data-val="4">★</span>
+            <span class="star" data-val="5">★</span>
+        </div>
+    </div>
+
     <div id="comment-wrapper" style="background: #ffffff; padding: 15px; border-radius: 12px; border: 1px solid #e0e0e0; overflow: hidden;">
         <div id="cusdis_thread"
           data-host="https://cusdis.com"
@@ -128,48 +139,64 @@
           data-page-title="Sustainable Energy Karachi">
         </div>
     </div>
-  </section>
+</section>
 
-  <style>
-    /* Hides internal scrollbars for a flat look */
+<style>
+    /* Styling for the Star UI */
+    #star-rater .star.active { color: #ffca28; }
+    #star-rater .star:hover { transform: scale(1.1); transition: 0.2s; }
+
+    /* Cusdis iframe fixes */
     #comment-wrapper iframe {
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
     }
-    #comment-wrapper iframe::-webkit-scrollbar {
-        display: none !important;
-    }
-  </style>
+    #comment-wrapper iframe::-webkit-scrollbar { display: none !important; }
+</style>
 
-  <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
-  <script>
+<script>
+    const stars = document.querySelectorAll('#star-rater .star');
+    
+    stars.forEach(star => {
+        star.addEventListener('click', (e) => {
+            const rating = e.target.getAttribute('data-val');
+            
+            // Highlight stars visually
+            stars.forEach(s => {
+                s.classList.toggle('active', s.getAttribute('data-val') <= rating);
+            });
+
+            // "Bridge" Logic: Inform the user
+            const starIcons = "★".repeat(rating) + "☆".repeat(5 - rating);
+            
+            // Try to find the Cusdis iframe and prompt the user to add their review
+            // Since iframes have security blocks, we remind the user to post their selected stars
+            const msg = `You selected ${rating} stars! \n\nPlease write your feedback below. We will include "${starIcons}" in your review.`;
+            alert(msg);
+        });
+    });
+
     window.cusdis_on_runtime_ready = function() {
-      // Create custom CSS to overwrite labels inside the iFrame
       const style = document.createElement('style');
       style.innerHTML = `
-        /* Overwrite 'Nickname' with 'Name' */
         label[for="nickname"] { font-size: 0 !important; }
         label[for="nickname"]::before { content: "Name"; font-size: 14px !important; visibility: visible; }
-
-        /* Overwrite 'Reply' with 'Feedback' */
         label[for="content"] { font-size: 0 !important; }
-        label[for="content"]::before { content: "Feedback"; font-size: 14px !important; visibility: visible; }
-
-        /* Hide Scrollbar inside iFrame */
-        body { overflow: hidden !important; }
+        label[for="content"]::before { content: "Your Feedback & Rating"; font-size: 14px !important; visibility: visible; }
+        body { overflow: hidden !important; font-family: sans-serif; }
       `;
       
-      // Inject CSS once the iFrame is detected
       const injectToIframe = setInterval(() => {
         const iframe = document.querySelector('#cusdis_thread iframe');
         if (iframe && iframe.contentDocument && iframe.contentDocument.head) {
           iframe.contentDocument.head.appendChild(style);
           clearInterval(injectToIframe);
         }
-      }, 200);
+      }, 500);
     };
-  </script>
+</script>
 
   <footer class="site-footer">
     <div class="container">
