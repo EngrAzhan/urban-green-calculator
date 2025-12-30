@@ -144,18 +144,34 @@
         background-size: 35px 35px;
     }
 
-    /* RE-ADDED BACKGROUND IMAGE HERE */
-    .big-picture-hero {
-        position: relative;
-        background: linear-gradient(rgba(0, 77, 64, 0.85), rgba(0, 77, 64, 0.85)), url('karachi_city_bg.jpg'); /* Ensure this filename is correct */
-        background-size: cover;
-        background-position: center;
-        color: white;
-        padding: 80px 20px;
-        text-align: center;
-        border-radius: 0 0 50px 50px;
-        margin-bottom: 50px;
-    }
+    /* Restored Hero Section with Karachi BG */
+.big-picture-hero {
+    position: relative;
+    /* Use 'karachi_city_bg.jpg' or the exact name of your image file */
+    background: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.75)), 
+                url('karachi_city_bg.jpg') no-repeat center center; 
+    background-size: cover;
+    color: white;
+    padding: 100px 20px; /* Increased padding for more breathing room */
+    text-align: center;
+    border-radius: 0 0 40px 40px;
+    margin-bottom: 50px;
+}
+
+/* Glass effect for boxes to show BG through them */
+.hero-box {
+    background: rgba(255, 255, 255, 0.08); /* Semi-transparent */
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px); /* This gives that frosted glass look */
+    transition: transform 0.3s ease;
+}
+
+.hero-box:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.12);
+}
 
     .hero-grid {
         display: grid;
