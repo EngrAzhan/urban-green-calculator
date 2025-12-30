@@ -1682,3 +1682,21 @@ button[onclick*="goToStep"]:hover {
     padding: 20px;
     border-radius: 12px;
 }
+
+
+/* Add this to your style.css */
+.project-overview-content {
+    /* 1. Force sharp rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    /* 2. Ensure contrast (use a slightly darker gray/black) */
+    color: #1a1a1a; 
+    
+    /* 3. Increase font weight slightly */
+    font-weight: 450; 
+    
+    /* 4. Fix potential blur from animations */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
