@@ -111,26 +111,29 @@
     </section>
   </main>
 
-  <section class="container" style="margin: 20px auto 40px auto; width: 100%;">
-    <div style="text-align: center; margin-bottom: 15px;">
-        <h3 style="color: #004d40; font-family: sans-serif; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 8px;">
-            <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block;"></span>
+
+  <section id="feedback-section" style="margin: 40px auto; width: 100%; max-width: 100%; padding: 0 10px; box-sizing: border-box;">
+    
+    <div style="text-align: center; margin-bottom: 25px;">
+        <h3 style="color: #004d40; font-family: sans-serif; font-size: 1.5rem; display: inline-flex; align-items: center; gap: 10px;">
+            <span style="width: 10px; height: 10px; background: #2ecc71; border-radius: 50%; display: inline-block;"></span>
             Project Feedback & Ratings
         </h3>
     </div>
 
-    <div style="text-align: center; margin-bottom: 20px;">
-        <p style="font-family: sans-serif; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Select your rating:</p>
-        <div id="star-rater" style="display: flex; justify-content: center; gap: 10px; font-size: 2.5rem; cursor: pointer; color: #ddd;">
-            <span class="star" data-val="1">★</span>
-            <span class="star" data-val="2">★</span>
-            <span class="star" data-val="3">★</span>
-            <span class="star" data-val="4">★</span>
-            <span class="star" data-val="5">★</span>
+    <div style="text-align: center; margin-bottom: 25px; background: #f9f9f9; padding: 20px; border-radius: 12px; border: 1px dashed #2ecc71;">
+        <p style="font-family: sans-serif; font-size: 1rem; color: #444; margin-bottom: 10px; font-weight: bold;">Step 1: Click to Rate</p>
+        <div id="star-rater" style="display: flex; justify-content: center; gap: 15px; font-size: 3rem; cursor: pointer; color: #ddd;">
+            <span class="star" data-val="1" title="Poor">★</span>
+            <span class="star" data-val="2" title="Fair">★</span>
+            <span class="star" data-val="3" title="Good">★</span>
+            <span class="star" data-val="4" title="Very Good">★</span>
+            <span class="star" data-val="5" title="Excellent">★</span>
         </div>
+        <p id="rating-status" style="font-family: sans-serif; font-size: 0.9rem; color: #2ecc71; margin-top: 10px; font-weight: bold; height: 20px;"></p>
     </div>
 
-    <div id="comment-wrapper" style="background: #ffffff; padding: 15px; border-radius: 12px; border: 1px solid #e0e0e0; width: 100%; box-sizing: border-box;">
+    <div id="comment-wrapper" style="width: 100%; background: #ffffff; border-radius: 12px; border: 1px solid #e0e0e0; min-height: 400px;">
         <div id="cusdis_thread"
           data-host="https://cusdis.com"
           data-app-id="43f7867a-ea84-4649-86cd-a51810398e24"
@@ -142,61 +145,77 @@
 </section>
 
 <style>
-    /* Styling for the Star UI */
-    #star-rater .star.active { color: #ffca28; }
-    
-    /* Crucial: Force the iframe to grow with content instead of scrolling */
+    /* Styling for interaction */
+    #star-rater .star { transition: transform 0.2s, color 0.2s; }
+    #star-rater .star.active { color: #ffca28; text-shadow: 0 0 10px rgba(255, 202, 40, 0.5); }
+    #star-rater .star:hover { transform: scale(1.2); }
+
+    /* Force Cusdis to be full width and remove its internal scroll */
     #cusdis_thread iframe {
         width: 100% !important;
-        min-height: 500px; /* Set a starting height */
+        min-height: 600px !important; /* Forces it to be tall so no internal scroll */
         border: none !important;
-        overflow: hidden !important;
     }
 </style>
 
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 <script>
+    // 1. STAR RATING LOGIC
     const stars = document.querySelectorAll('#star-rater .star');
-    
+    const statusText = document.getElementById('rating-status');
+
     stars.forEach(star => {
         star.addEventListener('click', (e) => {
-            const rating = e.target.getAttribute('data-val');
+            const val = e.target.getAttribute('data-val');
             
-            // Highlight stars visually
+            // Highlight stars
             stars.forEach(s => {
-                s.classList.toggle('active', s.getAttribute('data-val') <= rating);
+                s.classList.toggle('active', s.getAttribute('data-val') <= val);
             });
 
-            // "Bridge" Logic: Inform the user
-            const starIcons = "★".repeat(rating) + "☆".repeat(5 - rating);
-            
-            // Try to find the Cusdis iframe and prompt the user to add their review
-            // Since iframes have security blocks, we remind the user to post their selected stars
-            const msg = `You selected ${rating} stars! \n\nPlease write your feedback below. We will include "${starIcons}" in your review.`;
-            alert(msg);
+            // Update status
+            const starIcons = "⭐".repeat(val);
+            statusText.innerText = `Selected: ${val} Stars. Now type your feedback below!`;
+
+            // BRIDGE: Try to auto-fill the Cusdis textarea
+            const iframe = document.querySelector('#cusdis_thread iframe');
+            if (iframe && iframe.contentDocument) {
+                const textArea = iframe.contentDocument.querySelector('textarea');
+                if (textArea) {
+                    textArea.value = `[Rating: ${starIcons}]\n` + textArea.value;
+                    textArea.focus();
+                }
+            }
         });
     });
 
+    // 2. CUSDIS CUSTOMIZATION (Labels and Height)
     window.cusdis_on_runtime_ready = function() {
-      const style = document.createElement('style');
-      style.innerHTML = `
-        label[for="nickname"] { font-size: 0 !important; }
-        label[for="nickname"]::before { content: "Name"; font-size: 14px !important; visibility: visible; }
-        label[for="content"] { font-size: 0 !important; }
-        label[for="content"]::before { content: "Your Feedback & Rating"; font-size: 14px !important; visibility: visible; }
-        body { overflow: hidden !important; font-family: sans-serif; }
-      `;
-      
-      const injectToIframe = setInterval(() => {
-        const iframe = document.querySelector('#cusdis_thread iframe');
-        if (iframe && iframe.contentDocument && iframe.contentDocument.head) {
-          iframe.contentDocument.head.appendChild(style);
-          clearInterval(injectToIframe);
-        }
-      }, 500);
+        const style = document.createElement('style');
+        style.innerHTML = `
+            label[for="nickname"]::before { content: "Name"; font-size: 14px; visibility: visible; font-weight: bold; color: #004d40; }
+            label[for="nickname"] { font-size: 0 !important; }
+            label[for="content"]::before { content: "Step 2: Type Your Feedback (Rating will be added here)"; font-size: 14px; visibility: visible; font-weight: bold; color: #004d40; }
+            label[for="content"] { font-size: 0 !important; }
+            button[type="submit"] { background: #2ecc71 !important; border-radius: 8px !important; font-weight: bold !important; }
+            /* Prevent internal scrolling */
+            body { overflow: hidden !important; }
+        `;
+
+        const inject = setInterval(() => {
+            const iframe = document.querySelector('#cusdis_thread iframe');
+            if (iframe && iframe.contentDocument && iframe.contentDocument.head) {
+                iframe.contentDocument.head.appendChild(style);
+                clearInterval(inject);
+            }
+        }, 500);
     };
 </script>
+
+  
+
+
 
   <footer class="site-footer">
     <div class="container">
